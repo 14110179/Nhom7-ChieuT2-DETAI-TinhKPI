@@ -1,0 +1,247 @@
+
+
+.customDiv1
+{
+	margin:3px;
+	min-height:300px;
+	background-repeat: no-repeat;
+	min-width:50%;
+
+}	
+	div#bg{
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		z-index:-1;
+	} 
+	.thongbao {
+	    background: url(Image/thongbao.png) no-repeat;
+	    width: 325px;
+	    height: 49px;
+	    margin-left: -11px;
+	    margin-top: 15px;
+	}
+	.trangcuaban {
+	   
+	    width: 1000px;
+	    height: 49px;
+	    margin-left: -11px;
+	    margin-top: 15px;
+	}
+	.trangcuaban a {
+	    float: left;
+	    color: black;
+	    font: 13px Arial, Helvetica, sans-serif;
+	    padding-left: 60px;
+	    padding-top: 12px;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    width: 325px;
+	}
+	.thongbao a {
+	    float: left;
+	    color: #fff;
+	    font: 13px Arial, Helvetica, sans-serif;
+	    padding-left: 60px;
+	    padding-top: 12px;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    width: 325px;
+	}
+	.frame_hor {
+	    float: left;
+	    padding-bottom: 20px;
+	}
+	.frame_hor .title {
+	    color: #054690;
+	    float: left;
+	    width: 280px;
+	    margin-left: 15px;
+	    margin-bottom: 10px;
+	    font: 14px Arial, Helvetica, sans-serif;
+	    font-weight: bold;
+	}
+	.tintuc a {
+	    float: left;
+	    color: #fff;
+	    font: 13px Arial, Helvetica, sans-serif;
+	    padding-left: 60px;
+	    padding-top: 12px;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    width: 325px;
+	}
+	.img_ct {
+	    clear: both;
+	    background: url(/Resources/ImagesPortal/HomePage/bg_img.png) no-repeat;
+	    width: 281px;
+	    height: 109px;
+	    float: left;
+	    margin-left: 15px;
+	}
+	.shadow-radial {
+	    display: inline-block;
+	    position: relative;
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+	    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	}
+	.frame_hor .date {
+	    float: left;
+	    font: 11px Arial, Helvetica, sans-serif;
+	    color: #666;
+	    margin-left: 16px;
+	    margin-top: 3px;
+	}
+	.frame_hor .mota {
+	    clear: both;
+	    float: left;
+	    font: 13px Arial, Helvetica, sans-serif;
+	    color: #212121;
+	    margin-left: 15px;
+	    margin-top: 5px;
+	    line-height: 18px;
+	    margin-right: 5px;
+	}
+	.tinkhac {
+	    clear: both;
+	    float: left;
+	    border-top: 1px solid #c8c8c8;
+	    margin: 10px 15px;
+	}
+	.slide {
+	    clear: both;
+	    float: right;
+	    padding-bottom: 20px;
+	    padding-top: 10px;
+	    margin-right: 15px;
+	    color: #333333;
+	}
+	.slide-up {
+	    color: #fff;
+	    box-shadow: inset 0 100px 0 0 #0574c3;
+	    background: #df282d;
+	    text-align: center;
+	    font: 12px Arial, Helvetica, sans-serif;
+	    border-top-left-radius: 5px;
+	    border-top-right-radius: 5px;
+	    border-bottom-left-radius: 5px;
+	    border-bottom-right-radius: 5px;
+	   
+	    -webkit-border-radius: 5px;
+
+	}
+	.tintuc {
+	    background: url(Image/tintuc.png) no-repeat;
+	    width: 325px;
+	    height: 49px;
+	    margin-left: -11px;
+	    margin-top: 15px;
+	}
+	.ct_frame_L {
+	    float: left;
+	    width: 308px;
+	    /* margin-right: 35px; */
+	    margin-left: 10px;
+	    border: 1px solid #cccccc;
+	    border-top-left-radius: 5px;
+	    border-top-right-radius: 5px;
+	    border-bottom-left-radius: 5px;
+	    border-bottom-right-radius: 5px;
+	    
+	    -webkit-border-radius: 5px;
+	    
+	}
+	.img_ct {
+	    clear: both;
+	    background: url(/Resources/ImagesPortal/HomePage/bg_img.png) no-repeat;
+	    width: 281px;
+	    height: 109px;
+	    float: left;
+	    margin-left: 15px;
+	}
+	.container{
+		width:100%;
+	
+	}
+	.customDiv{
+		margin: 3px;
+		padding: 5px;
+		min-height: 150px;
+		background-image:url(spkt.jpg) ;
+		background-size:100%;
+		
+		background-repeat: no-repeat;
+		background-position: center center;
+		font-size: large;
+		display: block;
+		max-width:100%;
+		max-height:100%;
+	}
+	#well{
+
+	}
+	#ccc{
+		width: auto;
+		text-align: left;
+		background-color: lightblue;
+	}
+	#cc{
+		background-size: auto;
+		vertical-align: center;
+		background-repeat: no-repeat;	
+		width: 600px;
+		align-content: center;
+		background-color: LightSkyBlue	;
+	}
+	#trgchu{
+		background-size: auto;
+		vertical-align: center;
+		background-repeat: no-repeat;	
+		width: 280px;
+		align-content: center;
+		
+	}
+	#trangcuaban{
+		background-size: auto;
+		vertical-align: center;
+		background-repeat: no-repeat;	
+		width: 100%
+		align-content: center;
+	}
+	#btngroup{
+		align-content: center;
+	}
+	.site-footer{
+		background-color: #222;
+		color: #fff;
+		margin-top: 30px;
+		padding-top: 30px; 
+	}
+	.bottom-footer{
+		border-top: 1px solid #b2b2b2;
+		margin-top: 10px;
+		padding-top: 10px;
+		color: #b2b2b2;
+	}
+	.footer-nav {
+		text-align: right;
+		list-style: none;
+
+	}
+	.footer-nav li{
+		display: inline;
+	}
+	.footer-nav li:not(:first-child):before{
+		content: '|';
+		padding: 0px 10px;
+	}
+	.footer-nav a{
+		color: #b2b2b2;
+	}
+	.footer-nav a:hover{
+		color: #fff;
+		text-decoration: none;
+	}
