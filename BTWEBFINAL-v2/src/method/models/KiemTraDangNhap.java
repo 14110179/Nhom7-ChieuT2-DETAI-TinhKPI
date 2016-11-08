@@ -31,7 +31,20 @@ public class KiemTraDangNhap {
 				return rs.getInt("roleid");
 		}catch(SQLException e){
 			e.printStackTrace();
-		}		
+		}
+		finally
+		{
+			
+				try {
+					con.close();
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+		}
 		return -1;		
 	}
 	
@@ -58,7 +71,19 @@ public class KiemTraDangNhap {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		
+		finally
+		{
+			
+				try {
+					con.close();
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+		}
 		
 		return check;
 		

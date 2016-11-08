@@ -2,6 +2,8 @@
 <%@page import="java.util.ArrayList" %>
 <%@page import="method.models.TaiKhoan" %>
 <%@page import="method.models.ThongTinTaiKhoan" %>
+<%@ page import="method.models.ThongTinUser" %>
+<%@ page import="method.models.LayThongTinUser" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,10 +56,12 @@
 		 		for(TaiKhoan tk : listTK)
 		 		{
 		 			i++;
+		 			String modalURL = "ThongTinTaiKhoan.jsp?taikhoan="+tk.getTenTaiKhoan();		 			
+		 			
 			%>
 			<tr>
-				<td><%=i %></td>
-				<td><a onclick="clickon()" id="thongtin" value="<%=tk.getTenTaiKhoan() %>"><%=tk.getTenTaiKhoan() %></a></td>
+				<td><%=i%></td>			
+				<td><a href="<%=modalURL%>" data-toggle="modal" data-target="#myModal1"  id="thongtin" value="<%=tk.getTenTaiKhoan() %>"><%=tk.getTenTaiKhoan() %></a></td>
 				<td><%=tk.getMatKhau() %></td>
 				<td><%=tk.getChucVu() %></td>
 			</tr>
@@ -65,17 +69,8 @@
 			 	}
 			%>
           </table>
-          result = <input id="result" type="text">
-          <script>
-          $(function () {
-              $('#table a').click(function (e) {
-                  e.preventDefault();
-                  //$('#result').val($(this).closest('tr').find('td:first').text()); //Lấy value cột thứ nhất
-               $('#result2').val($(this).closest('tr').find('td:nth-child(2)').text()); //Hoặc lấy giá trị cột thứ 2
-                alert($('#result2').val($(this).closest('tr').find('td:nth-child(2)').text()));
-              });
-          });          
-          </script>
+          
+         
           <div >
           <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -85,46 +80,8 @@
                 <h4 align="center" class="modal-title">Thông tin người dùng</h4>
               </div>
               <div class="modal-body">
-			<table class="table">
-          	
-            <tr>
-              <td><label for="user">Tên tài khoản</label></td>
-              <td><input type="text" class="form " placeholder="Nhập tài khoản"></td>
-            </tr>
-            <tr>
-              <td><label for="password">Mật khẩu</label></td>
-              <td><input type="password" class="form" placeholder="Password"></td>
-            </tr>
-            <tr>
-              <td><label for="chon">Phân quyền</label></td>
-              <td>
-                <select id="chon">
-                  <option value="giangvien">Giảng viên</option>
-                  <option value="truongbomon">Trưởng bộ môn</option>
-                  <option value="truongkhoa">Trưởng khoa</option>
-                  <option value="phongtccb">Phòng TCCB</option>
-                  <option value="hieutruong">Hiệu trưởng</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="hoten">Họ tên</label></td>
-              <td><input type="text" class="form " placeholder="Nhập họ tên"></td>
-            </tr>
-            <tr>
-              <td><label for="ngaysinh">Ngày sinh</label></td>
-              <td><input type="date" class="form "></td>
-            </tr>
-            <tr>
-              <td><label for="diachi">Địa chỉ</label></td>
-              <td><input type="text" class="form " placeholder="Nhập địa chỉ"></td>
-            </tr>
-            <tr>
-              <td><label for="email">Email</label></td>
-              <td><input type="email" class="form " placeholder="Nhập địa chỉ email"></td>
-            </tr>
-          </table>
+         
+			
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
