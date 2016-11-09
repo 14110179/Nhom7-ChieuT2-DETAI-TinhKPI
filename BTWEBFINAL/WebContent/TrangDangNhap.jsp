@@ -118,10 +118,15 @@
             </tr>
             </table>
             </form>
+            
             <script >
               	function clickvao()
               	{
               		document.getElementById("kiemtradoimatkhau").innerHTML="";
+              		<%
+              		session.setAttribute("thongbao","");
+              		session.setAttribute("message","");
+              		%>
               		document.getElementById("kiemtrataikhoan").innerHTML="";
               	}
           	 </script>  

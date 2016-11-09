@@ -65,3 +65,45 @@ create table tieuchi
     foreign key (mabieumau) references bieumau(mabieumau),
     foreign key (manhomtc) references nhomtieuchi(manhomtc)
 );
+create table thongbao
+(
+	mathongbao int primary key,
+    tenthongbao nvarchar(200),
+    noidung nvarchar(1000),
+    nguoigui char(20),
+    thoigian datetime,
+    nguoinhan char(20),
+    trangthai nvarchar(100),
+    foreign key (nguoigui) references users(username),
+    foreign key (nguoinhan) references users(username)
+);
+create table phancongcv
+(
+	nguoiphancong char(20),
+    nguoithuchien char(20),
+    mabieumau int,
+    matieuchi int,
+    ngayhoanthanh date,
+    trangthai nvarchar(100),
+    diemtudanhgia int,
+    diemtruongkhoa int,
+    diemtruongbomon int,
+    foreign key (nguoiphancong) references users(username),
+    foreign key (nguoithuchien) references users(username),
+    foreign key (mabieumau) references bieumau(mabieumau),
+    foreign key (matieuchi) references tieuchi(matieuchi)
+);
+create table thuchienbieumau
+(
+	mabieumau int,
+    nguoithuchien char(20),
+    trangthai nvarchar(100),
+    matieuchi int,
+    diemtudanhgia int,
+    diemtruongbomon int,
+    diemtruongkhoa int,
+    diembangiamhieu int,
+    foreign key (mabieumau) references bieumau(mabieumau),
+    foreign key (matieuchi) references tieuchi(matieuchi),
+    foreign key (nguoithuchien) references users(username)
+);

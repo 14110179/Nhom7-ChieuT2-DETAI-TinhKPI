@@ -9,6 +9,7 @@ public class ThongTinTaiKhoan {
 
 	public ArrayList<TaiKhoan> getAllAccout()
 	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
 		ArrayList<TaiKhoan> atk=new ArrayList<TaiKhoan>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -18,10 +19,9 @@ public class ThongTinTaiKhoan {
 		Connection con=null;
 		Statement stm=null;
 		ResultSet rs;	
-		ResultSet rs2;	
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			rs=stm.executeQuery("select username,pass,rolename from users,role where users.roleid=role.roleid");
 			

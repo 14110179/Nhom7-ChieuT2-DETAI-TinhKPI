@@ -1,6 +1,5 @@
 package method.models;
 
-import java.util.Date;
 
 public class ThongTinUser {
 	String username;

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UFO-8">
- <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Lý Người Dùng</title>
@@ -20,6 +20,23 @@
       <script src="js/jquery1.12.4.min.js"></script>
 </head>
 <body>
+	<script>
+        $(document).ready(function(){
+        	<%
+    			if(request.getAttribute("ketqua")=="thanhcong"||request.getAttribute("ketqua2")=="thanhcong")
+    			{
+    		%>
+    				alert("thành công");
+    		<%
+    			}       		
+    			if(request.getAttribute("ketqua")=="thatbai"||request.getAttribute("ketqua2")=="thatbai")
+    			{
+    		%>
+    				alert("thất bại");
+    				
+    		<%	}%>
+		});
+	</script>
 	<div class="container">
     <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
     <tr>
@@ -41,12 +58,14 @@
         <div class="table-responsive">
           <table class="table" id="table">
           <h3 align="center"><strong>Quản lí người dùng</strong></h3> <br>
+          <form>
           <div align="right">
-            <input class="form-control" type="text" class="form " placeholder="Từ khóa">
-            <button class="btn btn-default">Tìm kiếm</button>
+            <input class="form-control" name="noidungtimkiem" id="noidungtimkiem" type="text" placeholder="Từ khóa">
+            <button class="btn btn-default" type="submit" >Tìm kiếm</button>
           </div>
+          </form>
           <br>
-          <tr><th>STT</th><th>Tên Tài Khoản</th><th>Mật khẩu</th><th>Phân quyền</th></tr>
+          <tr><th>STT</th><th>Tên Tài Khoản</th><th>Mật khẩu</th><th>Phân quyền</th><th>Hủy bỏ</th></tr>
           	<%
 				ThongTinTaiKhoan tttk=new ThongTinTaiKhoan();
 				ArrayList<TaiKhoan> listTK=tttk.getAllAccout(); 
@@ -56,121 +75,24 @@
 		 		for(TaiKhoan tk : listTK)
 		 		{
 		 			i++;
-		 			String modalURL = "ThongTinTaiKhoan.jsp?taikhoan="+tk.getTenTaiKhoan();		 			
-		 			
+		 			String modalURL = "ThongTinTaiKhoan.jsp?taikhoan="+tk.getTenTaiKhoan();
+		 			String xoaURL ="DeleteTaiKhoan?taikhoan2="+tk.getTenTaiKhoan();
 			%>
 			<tr>
 				<td><%=i%></td>			
-				<td><a href="<%=modalURL%>" data-toggle="modal" data-target="#myModal1"  id="thongtin" value="<%=tk.getTenTaiKhoan() %>"><%=tk.getTenTaiKhoan() %></a></td>
+				<td><a href="<%=modalURL%>" ><%=tk.getTenTaiKhoan() %></a></td>
 				<td><%=tk.getMatKhau() %></td>
 				<td><%=tk.getChucVu() %></td>
+				<td><a href="<%=xoaURL%>"><span class="glyphicon glyphicon-remove"></span></a></td>
 			</tr>
 			<%
 			 	}
 			%>
-          </table>
-          
-         
+          </table>        
           <div >
-          <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div align="center" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-                <h4 align="center" class="modal-title">Thông tin người dùng</h4>
-              </div>
-              <div class="modal-body">
-         
-			
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Xác nhận</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-           
-         <a href="#myModal"><button style="position: relative; left: 30%;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm người dùng</button></a>
-        
-       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div align="center" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-                <h4 class="modal-title">Thêm người dùng</h4>
-              </div>
-              <div class="modal-body">
-<table class="table">
-          
-            <tr>
-              <td><label for="user">Tên tài khoản</label></td>
-              <td><input type="text" class="form " placeholder="Nhập tài khoản"></td>
-            </tr>
-            <tr>
-              <td><label for="password">Mật khẩu</label></td>
-              <td><input type="password" class="form" placeholder="Password"></td>
-            </tr>
-            <tr>
-              <td><label for="chon">Phân quyền</label></td>
-              <td>
-                <select id="chon">
-                  <option value="giangvien">Giảng viên</option>
-                  <option value="truongbomon">Trưởng bộ môn</option>
-                  <option value="truongkhoa">Trưởng khoa</option>
-                  <option value="phongtccb">Phòng TCCB</option>
-                  <option value="hieutruong">Hiệu trưởng</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="hoten">Họ tên</label></td>
-              <td><input type="text" class="form " placeholder="Nhập họ tên"></td>
-            </tr>
-            <tr>
-              <td><label for="ngaysinh">Ngày sinh</label></td>
-              <td><input type="date" class="form "></td>
-            </tr>
-            <tr>
-              <td><label for="diachi">Địa chỉ</label></td>
-              <td><input type="text" class="form " placeholder="Nhập địa chỉ"></td>
-            </tr>
-            <tr>
-              <td><label for="email">Email</label></td>
-              <td><input type="email" class="form " placeholder="Nhập địa chỉ email"></td>
-            </tr>
-          </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-        <a href="#xoanguoidung"><button style="position: relative; left: 30%;" class="btn btn-primary" data-toggle="modal" data-target="#xoanguoidung">Xóa người dùng</button></a>
-        
-       <div class="modal fade" id="xoanguoidung" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div align="center" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-                <h4 class="modal-title">Xóa người dùng</h4>
-              </div>
-              <div align="center" class="modal-body">
-                <p>Tài khoản cần xóa</p>
-                <input type="text" name="">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Xác nhận</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-      
+        	           
+        <a href="ThemNguoiDung.jsp"><button style="position: relative; left: 30%;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm người dùng</button></a>
+     	
           </div>
         </div>
       </div>

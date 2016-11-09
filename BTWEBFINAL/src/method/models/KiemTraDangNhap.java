@@ -9,6 +9,7 @@ import java.sql.Statement;
 public class KiemTraDangNhap {
 	public int ChucVu(String username,String password) 
 	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
 		int check=0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -20,7 +21,7 @@ public class KiemTraDangNhap {
 		ResultSet rs;	
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			rs=stm.executeQuery("SELECT * FROM users WHERE username='"+username+"' AND pass='"+password+"'");
 			if(rs.next())
@@ -50,6 +51,7 @@ public class KiemTraDangNhap {
 	
 	public boolean checkTaiKhoan(String username,String password) 
 	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
 		boolean check=false;
 		
 		try {
@@ -64,7 +66,7 @@ public class KiemTraDangNhap {
 		
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			rs=stm.executeQuery("SELECT * FROM users WHERE username='"+username+"' AND pass='"+password+"'");
 			check=rs.next();

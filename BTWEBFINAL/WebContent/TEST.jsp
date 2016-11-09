@@ -25,60 +25,6 @@
         
 </head>
 <body>
-			<% 
-       			LayThongTinUser ltt=new LayThongTinUser();
-        		ThongTinUser x= ltt.LayThongTin2(request.getParameter("taikhoan")); 
-        	%>
-        	<div align="center" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-                <h4 align="center" class="modal-title">Thông tin người dùng</h4>
-              </div>
-              <div class="modal-body">
-           
-			<table class="table">
-          	
-            <tr>
-              <td><label for="user">Tên tài khoản</label></td>
-              <td><input type="text" class="form " value="<%= x.getUsername()%>"></td>
-            </tr>
-            <tr>
-              <td><label for="password">Mật khẩu</label></td>
-              <td><input type="text" class="form" value="<%= x.getPass()%>"></td>
-            </tr>
-            <tr>
-              <td><label for="chon">Phân quyền</label></td>
-              <td>
-                <select id="chon">
-                  <option selected="true" value="<%= x.getChucvu()%>"><%= x.getChucvu()%></option>
-                  <option value="Trưởng bộ môn">Trưởng bộ môn</option>
-                  <option value="Trưởng khoa">Trưởng khoa</option>
-                  <option value="Phòng TCCB">Phòng TCCB</option>
-                  <option value="Hiệu trưởng">Hiệu trưởng</option>
-                  <option value="Admin">Admin</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="hoten">Họ tên</label></td>
-              <td><input type="text" class="form " value="<%= x.getHoten()%>"></td>
-            </tr>
-            <tr>
-              <td><label for="ngaysinh">Ngày sinh</label></td>
-              <td><input type="date" class="form " value="<%= x.getNgaysinh()%>" ></td>
-            </tr>
-            <tr>
-              <td><label for="diachi">Địa chỉ</label></td>
-              <td><input type="text" class="form " value="<%= x.getDiachi()%>"></td>
-            </tr>
-            <tr>
-              <td><label for="email">Email</label></td>
-              <td><input type="email" class="form " value="<%= x.getEmail()%>"></td>
-            </tr>
-          </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Xác nhận</button>
-              </div>
+			
 </body>
 </html>

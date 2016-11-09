@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +12,7 @@ import java.util.Date;
 public class LayThongTinUser {
 	public ThongTinUser LayThongTin(String username,String password) 
 	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
 		ThongTinUser tt=null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -24,7 +24,7 @@ public class LayThongTinUser {
 		ResultSet rs;	
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			rs=stm.executeQuery("SELECT * FROM users WHERE username='"+username+"' AND pass='"+password+"'");
 				String usernamegv="";
@@ -89,7 +89,7 @@ public class LayThongTinUser {
 				if(gioitinhgv==1)
 					gt="Nam";
 				else
-					gt="Nu";
+					gt="Nữ";
 				tt=new ThongTinUser(usernamegv,"","",hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);											
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -116,6 +116,7 @@ public class LayThongTinUser {
 	
 	public ThongTinUser LayThongTin2(String username) 
 	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
 		ThongTinUser tt=null;		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -127,7 +128,7 @@ public class LayThongTinUser {
 		ResultSet rs;	
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			rs=stm.executeQuery("SELECT * FROM users,role WHERE username='"+username+"' and users.roleid=role.roleid");
 				String usernamegv="";
@@ -149,8 +150,8 @@ public class LayThongTinUser {
 				{								
 					if(rs.getDate("ngaysinh")==null)
 					{
-						SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-						String dateInString = "01/01/1990";
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+						String dateInString = "1990-01-01";
 						try {
 							ngaysinhgv=formatter.parse(dateInString);
 							formatter.format(ngaysinhgv);
@@ -190,12 +191,12 @@ public class LayThongTinUser {
 				
 					ghichugv=rs.getString("ghichu");
 				}						
-				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				String gt="";
 				if(gioitinhgv==1)
 					gt="Nam";
 				else
-					gt="Nu";
+					gt="Nữ";
 				tt=new ThongTinUser(usernamegv,pass,chucvu,hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);																							
 		}catch(SQLException e){
 			e.printStackTrace();
