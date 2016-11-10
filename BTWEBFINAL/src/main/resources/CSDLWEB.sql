@@ -39,25 +39,25 @@ insert into users value("GV005","123456","Nguyễn Văn E","1996/10/20",0,"Biên
 insert into users value("admin","123456","Nguyễn Văn F","1996/10/20",1,"Biên Hòa","Kinh","286512324","Không","Số 1 Võ Văn Ngân","09099090090","","Không có ghi chú",6);
 create table bieumau
 (
-	mabieumau int primary key,
+	mabieumau char(100) primary key,
     tenbieumau nvarchar(100),
     namhoc char(50),
     nguoitao char(20),
     foreign key (nguoitao) references users(username)
-) ;
+);
 create table nhomtieuchi
 (
-	manhomtc int primary key,
+	manhomtc char(100) primary key,
     tennhomtc nvarchar(100),
-    mabieumau int ,
+    mabieumau char(100),
     foreign key (mabieumau) references bieumau(mabieumau)
 );
 create table tieuchi
 (
-	matieuchi int primary key,
+	matieuchi char(100) primary key,
     tentieuchi nvarchar(500),
-    manhomtc int,
-    mabieumau int,
+    manhomtc char(100),
+    mabieumau char(100),
     diemtudanhgia int,
     diemtruongbomon int,
     diemtruongkhoa int,
@@ -67,7 +67,7 @@ create table tieuchi
 );
 create table thongbao
 (
-	mathongbao int primary key,
+	mathongbao char(100) primary key,
     tenthongbao nvarchar(200),
     noidung nvarchar(1000),
     nguoigui char(20),
@@ -81,8 +81,8 @@ create table phancongcv
 (
 	nguoiphancong char(20),
     nguoithuchien char(20),
-    mabieumau int,
-    matieuchi int,
+    mabieumau char(100),
+    matieuchi char(100),
     ngayhoanthanh date,
     trangthai nvarchar(100),
     diemtudanhgia int,
@@ -95,10 +95,10 @@ create table phancongcv
 );
 create table thuchienbieumau
 (
-	mabieumau int,
+	mabieumau char(100),
     nguoithuchien char(20),
     trangthai nvarchar(100),
-    matieuchi int,
+    matieuchi char(100),
     diemtudanhgia int,
     diemtruongbomon int,
     diemtruongkhoa int,

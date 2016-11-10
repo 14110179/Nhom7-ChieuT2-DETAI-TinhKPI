@@ -30,6 +30,48 @@
       <script src="js/jquery1.12.4.min.js"></script>
 </head>
 <body>
+	<script>
+        $(document).ready(function(){
+        	<%
+    			if(request.getAttribute("taobieumau")=="thanhcong")
+    			{
+    		%>
+    				alert("Tạo thành công");
+    		<%	}
+        		if(request.getAttribute("taobieumau")=="thatbai")
+        		{
+        	%>
+        			alert("Tạo thất bại!!!");
+        	<%	
+        		}
+        		if(request.getAttribute("suabieumau")=="thatbai")
+        		{
+        	%>
+        			alert("Chỉnh sửa thất bại!!!");
+        	<%
+        		}
+        		if(request.getAttribute("suabieumau")=="thanhcong")
+        		{       			       		
+        	%>
+        			alert("Chỉnh sửa thành công");
+        	<%
+        		}
+        		if(request.getAttribute("xoabieumau")=="thanhcong")
+        		{       			       		
+        	%>
+        			alert("Xóa thành công");
+        	<%
+        		}
+        		if(request.getAttribute("xoabieumau")=="thatbai")
+        		{       			       		
+        	%>
+        			alert("Xóa thất bại!!!");
+        	<%
+        		}
+        	%>
+        	
+		});
+     </script>
 	 <div class="container">
         <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
       		<tr>
@@ -57,23 +99,42 @@
 	<div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
+    	<form action="TaoBieuMau" method="post">
     	<div id="11" class="form-group " align="left">				
-     
+     		
+            <label >Mã biểu mẫu</label>
+            <input type="text" style=" width:100%;" readonly="readonly" id="mabieumau" name="mabieumau" class="form " value="BM2016-2017">
+            <br>			
             <label for="" ><span class="" ></span><span id="" ></span>Tên biểu mẫu</label>
-            <input style=" width:100%;" type="Text" class="form-control" id="" name="">
+            <input style=" width:100%;" type="Text" class="form-control" id="tenbieumau" name="tenbieumau" value="">
             <label for="" ><span class="" ></span><span id="" ></span>Năm học</label>
-            <input style=" width:100%;" type="Text" class="form-control" id="" name="">
+            <select name="namhoc" id="namhoc" onchange="Show();">
+            	<option selected="true" value="2016-2017">2016-2017</option>
+            	<option value="2017-2018">2017-2018</option>
+            	<option value="2018-2019">2018-2019</option>
+            	<option value="2019-2020">2019-2020</option>
+            	<option value="2020-2021">2020-2021</option>
+            	<option value="2021-2022">2021-2022</option>
+            </select>
+    <script type="text/javascript" >
+    	function Show(){
+            var cmb = document.getElementById("namhoc");        
+            document.getElementById("mabieumau").value ="BM"+cmb.options[cmb.selectedIndex].text;          
+        }
+    </script>
             <br>
-            <input id="" class="btn center-block"  style=" background-color: lightblue;" type="submit" value="Tạo biểu mẫu" >
+            <button type="submit" class="btn btn-default center-block"  name="btn" value="Tao">Tạo biểu mẫu</button>
+            <button type="submit" class="btn btn-default center-block"  name="btn" value="Sua">Chỉnh sửa biểu mẫu</button>
+            <button type="submit" class="btn btn-default center-block"  name="btn" value="Xoa">Xóa biểu mẫu</button>
         </div> 
+        </form>
     </div>
     <div class="col-lg-4"></div>
     </div>
     </div>
     </div>
     <!--Chỉnh sửa biểu mẫu-->
-    <div class="tab-pane" id="ChinhSuaBM" >   
-	
+    <div class="tab-pane" id="ChinhSuaBM" >   	
 	<div class="container" style="background-repeat: no-repeat;">
 	<div class="row">
     <div class="col-lg-2"></div>
@@ -81,10 +142,9 @@
       <table id="formdki" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
    		<tbody>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th scope="col"><p align="center">Phiếu Đăng Ký</p></th> 
-       			
+       			<th scope="col"><p align="center">Phiếu Đăng Ký</p></th>      			
        		</tr>       		
-      		
+    		
       		<tr align="center">
       			<td>
       				<button type="button" class="btn btn-primary" >Tạo nhóm tiêu chí</button>
