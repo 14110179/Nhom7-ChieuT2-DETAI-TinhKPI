@@ -20,18 +20,13 @@
         <script src="js/html5shiv.min.js"></script>
         <script src="js/respond.min.js"></script>
         <script src="js/jquery1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-   
-     
-        
-        
+        <script src="js/bootstrap.min.js"></script>      
 </head>
 <body>
-
 			<% 
        			LayThongTinUser ltt=new LayThongTinUser();
 				ThongTinUser x ;
-				x= ltt.LayThongTin2(request.getParameter("taikhoan"));   								
+				x= ltt.LayThongTin2(request.getAttribute("taikhoansearch").toString());   								
         	%>
          <form action="UpdateThongTinTaiKhoan" method="post">
         <div class="modal fade" id="myModal" role="dialog">
@@ -39,7 +34,7 @@
     			<div class="modal-content">
       				<div class="modal-header">
         				 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        				<h4 class="modal-title" id="myModalLabel">Thông tin tài khoản người dùng</h4>
+        				<h4 class="modal-title" id="myModalLabel">Kết quả tìm kiếm</h4>
       				</div>
       				<div class="modal-body">
         				

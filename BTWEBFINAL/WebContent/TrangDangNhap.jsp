@@ -25,11 +25,11 @@
       <tr>
         <td height="24"></td>
       </tr>          
-        <div class="container" align="center">
-            <img  src="Image/spkt.jpg" class="img-responsive">
-        </div>                   
+    <div class="container" align="center">
+      <img  src="Image/spkt.jpg" class="img-responsive">
+    </div>                   
     </table> 
-  <div class="container">
+  	<div class="container">
   	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -81,22 +81,22 @@
               	});
       		</script>
       		
-           <table>
+           	<table>
             <tr>
             <td>
             <div class="well" id="cc">
           
-             <div id="11" class="form-group " >
+            <div id="11" class="form-group " >
 				
                 <label for="InputUserName" ><span class="glyphicon glyphicon-user " ></span><span id="1" > </span> Tên Tài Khoản</label>
                 <input onclick=clickvao(); type="Text" class="form-control" id="InputUserName" name="InputUserName1" placeholder="Enter UserName" data-toggle="tooltip" data-placement="top" title="Tên tài khoản đăng nhập của bạn">
-             </div>  
-             <p style="color: red;" id="kiemtrataikhoan2"></p>  
-             <div id="22" class="form-group" >
+            </div>  
+            <p style="color: red;" id="kiemtrataikhoan2"></p>  
+            <div id="22" class="form-group" >
              
                 <label for="InputPassword"><span class="glyphicon glyphicon-lock"></span><span id="2" ></span> Mật khẩu</label>
                 <input onclick=clickvao(); type="password" class="form-control" id="InputPassword" name="InputPassword1" value="" placeholder="Password" data-toggle="tooltip" data-placement="top" title="Mật khẩu tài khoản của bạn">
-             </div>  
+            </div>  
              <%
              	Object s=session.getAttribute ("message");
                 Object ss=session.getAttribute ("thongbao");	
@@ -107,10 +107,10 @@
              %>
               <p style="color: red;" id="kiemtrataikhoan"><%= session.getAttribute ("message") %></p>
               <p style="color: red;" id="kiemtradoimatkhau"><%= session.getAttribute("thongbao")%></p>
-              <div class="checkbox">
-                <label data-toggle="tooltip" data-placement="top" title="Nhớ tên tài khoản cho lần đăng nhập sau"><input type="checkbox" >Nhớ tên tài khoản</label>
+            <div class="checkbox">
+              <label data-toggle="tooltip" data-placement="top" title="Nhớ tên tài khoản cho lần đăng nhập sau"><input type="checkbox" >Nhớ tên tài khoản</label>
                 
-             </div>            
+            </div>            
               <input onclick="validateForm()" id="btnDangNhap" class="btn center-block"  style="width: 20%; background-color: #ffffff;" type="submit" value="Đăng Nhập" >                                                              
               <p align="center" style="color: black;" data-target="#doimatkhau" data-toggle="modal" ><a href="#doimatkhau" >Đổi mật khẩu</a></p>          
             </div>
@@ -129,7 +129,7 @@
               		%>
               		document.getElementById("kiemtrataikhoan").innerHTML="";
               	}
-          	 </script>  
+          	</script>  
             <script >
               	function validateForm()
               	{
@@ -145,7 +145,7 @@
               		document.getElementById("kiemtrataikhoan").innerHTML=text;
               		return false;
               	}
-          	 </script>     		
+          	</script>     		
             <script >
             	var x=document.getElementById("InputUserName");          		
           		var y=document.getElementById("InputPassword");          		
@@ -185,7 +185,7 @@
               		});
           		});
             </script>
-             <script>
+            <script>
               function validateText(id)
               {
               	if($("#"+id).val()==null || $("#"+id).val()=="")
@@ -222,7 +222,7 @@
               			});
               		}
               		);
-              </script>
+           	</script>
               
               
               
@@ -230,7 +230,7 @@
               
               
               <br/>            
-		<div class="modal" id="doimatkhau" tabindex="-1">
+			<div class="modal" id="doimatkhau" tabindex="-1">
 			<div class="modal-dialog">
 			<div class="modal-content">
 			<div class="modal-header">

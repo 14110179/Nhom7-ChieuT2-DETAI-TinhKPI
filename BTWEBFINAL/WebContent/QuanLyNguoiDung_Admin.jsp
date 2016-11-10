@@ -34,6 +34,12 @@
     		%>
     				alert("thất bại");
     				
+    		<%	
+    			}
+    			if(request.getAttribute("kqsearch")=="khongtontai")
+    			{
+    		%>
+    				alert("Không tìm thấy!!!");
     		<%	}%>
 		});
 	</script>
@@ -58,15 +64,17 @@
         <div class="table-responsive">
           <table class="table" id="table">
           <h3 align="center"><strong>Quản lí người dùng</strong></h3> <br>
-          <form>
+          
+          <form action="SearchTaiKhoan">
           <div align="right">
-            <input class="form-control" name="noidungtimkiem" id="noidungtimkiem" type="text" placeholder="Từ khóa">
+            <input class="form-control" name="noidungtimkiem" id="noidungtimkiem" type="text" placeholder="Từ khóa" value="">           
             <button class="btn btn-default" type="submit" >Tìm kiếm</button>
           </div>
-          </form>
+         </form>   
           <br>
           <tr><th>STT</th><th>Tên Tài Khoản</th><th>Mật khẩu</th><th>Phân quyền</th><th>Hủy bỏ</th></tr>
           	<%
+          		
 				ThongTinTaiKhoan tttk=new ThongTinTaiKhoan();
 				ArrayList<TaiKhoan> listTK=tttk.getAllAccout(); 
 			%>
@@ -91,7 +99,7 @@
           </table>        
           <div >
         	           
-        <a href="ThemNguoiDung.jsp"><button style="position: relative; left: 30%;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm người dùng</button></a>
+        <a href="ThemNguoiDung.jsp"><button style="position: relative; left: 40%;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm người dùng</button></a>
      	
           </div>
         </div>
