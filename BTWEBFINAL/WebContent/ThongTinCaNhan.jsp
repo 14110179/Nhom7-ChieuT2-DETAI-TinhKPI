@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ page import="method.models.ThongTinUser" %>
+<%@ page import="thongtin.ThongTinUser" %>
 <%@ page import="method.models.LayThongTinUser" %>
 <sql:setDataSource
 	driver="com.mysql.jdbc.Driver"
@@ -55,8 +55,6 @@
       </td>
     </tr>
     </table>
-
-
   <table  style="position: relative; left: 15%;" class="img-responsive">
        <tbody>
          <tr>        
@@ -67,10 +65,7 @@
          
        </tbody>
   </table>
-
-
      <table cellspacing="0" cellpadding="4" border="3"  style="position: relative;left: 15%; color:#333333;width:70%;border-collapse:collapse; text-align: justify;">
-
      <tbody>
      <tr align="center" style="color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
          <th scope="col" style="width: 50%" ><p align="center">Bảng Thông Tin Cá Nhân</p></th>
@@ -86,10 +81,7 @@
           	<% 
        			LayThongTinUser ltt=new LayThongTinUser();
         		ThongTinUser tt= ltt.LayThongTin(session.getAttribute("taikhoan").toString(),session.getAttribute("matkhau").toString()); 
-        	%>
-			
-    	
-
+        	%>			  	
              <td style="width: 30%; height: auto;">
                <span>Mã số User</span><br>       
              </td>

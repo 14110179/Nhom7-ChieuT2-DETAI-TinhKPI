@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
-<%@page import="method.models.TaiKhoan" %>
-<%@page import="method.models.ThongTinTaiKhoan" %>
-<%@ page import="method.models.ThongTinUser" %>
+
 <%@ page import="method.models.LayThongTinUser" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

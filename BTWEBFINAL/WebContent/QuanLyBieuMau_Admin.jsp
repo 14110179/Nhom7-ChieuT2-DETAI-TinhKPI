@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="method.models.LayDanhSachBieuMau" %>
+<%@ page import="thongtin.DanhSachBieuMau" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="thongtin.DSNhomTC" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UFO-8">
-<meta charset="utf-8">
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Quản Lý Biểu Mẫu</title>
@@ -32,6 +36,13 @@
 <body>
 	<script>
         $(document).ready(function(){
+        	<%
+				if(request.getAttribute("loadtrang")=="ChinhSuaBM")
+				{
+			%>
+				document.getElementById('ChinhSuaBM').style.display = 'block';
+				document.getElementById('TaoBM').style.display = 'none';
+			<%	}%>
         	<%
     			if(request.getAttribute("taobieumau")=="thanhcong")
     			{
@@ -139,19 +150,72 @@
 	<div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
+    <form action="NhomTieuChi" method="post">
+    <%
+    	LayDanhSachBieuMau t=new LayDanhSachBieuMau();
+    	ArrayList<DanhSachBieuMau> listBM=t.getAllBieuMau();
+    %>
+  
+    <select id="mabieumau" name="mabieumau">
+    
+    
+    <%
+    	for(DanhSachBieuMau bm : listBM)
+    	{  		
+    %>
+    	<option id="bieumau" value="<%=bm.getMaBieuMau() %>"><%=bm.getMaBieuMau() %></option>
+    <%	} %>
+    </select>
+    	
+    
+   <button type="submit" id="" class="btn btn-primary" name="btn" value="refresh" ><span class="glyphicon glyphicon-refresh"></span></button>
+    
+    
       <table id="formdki" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
    		<tbody>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th scope="col"><p align="center">Phiếu Đăng Ký</p></th>      			
+       			<th scope="col"><p align="center">Phiếu Đăng Ký</p></th> 
+       			<th><p align="center">Xóa</p></th> 
+       			<th><p align="center">Thêm tiêu chí</p></th>       			
        		</tr>       		
-    		
+       		<%
+       			if(request.getAttribute("danhsachntc")!=null)
+    			for(DSNhomTC item : (ArrayList<DSNhomTC>)request.getAttribute("danhsachntc"))
+    			{  		
+    				String DeleteURL="DeleteNhomTieuChi?mantc="+item.getMaNTC()+"&mabieumau="+item.getMaBieuMau();
+    		%> 
+    			<tr>
+    				<td style="background-color: lightblue;">
+    					<%=item.getNoiDung()%>
+    				</td>
+    				<td style="width:5%; align:center;"><a href="<%=DeleteURL%>"><span class="glyphicon glyphicon-remove" style="align:center;"></span></a></td>
+    				<td style="width:15%; align:center;"><a href="#"><span class="glyphicon glyphicon-plus" style="align:center;"></span></a></td>
+    			</tr>
+       		<%	} %>	 		
+      		
+      	<tfoot>
       		<tr align="center">
-      			<td>
-      				<button type="button" class="btn btn-primary" >Tạo nhóm tiêu chí</button>
+      			<td colspan="4">
+      				<button type="button" id="taontc" class="btn btn-primary" >Tạo nhóm tiêu chí</button>
       			</td>
       		</tr>
+    	</tfoot>
+      		
     	</tbody>
     	</table>
+    	<script>
+			$(document).ready(function(){
+    		$("#taontc").click(function(){
+        	$("#nhomtieuchi").toggle();
+    			});
+			});
+		</script>
+    	<div class="container" id="nhomtieuchi" style="display:none;">
+    		<h3>Nội dung</h3>
+    		<textarea  style="height: 80px; width: 100%; resize: none;" cols="50" id="noidung" name="noidung" value=""></textarea>
+			<button type="submit" id="" class="btn btn-primary" name="btn" value="themtieuchi">Xác nhận</button>
+		</div>
+	</form>
 	</div>
 	<div class="col-lg-2"></div>
     <!--  -->

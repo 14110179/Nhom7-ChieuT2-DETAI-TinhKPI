@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import method.models.TaoBieuMauDG;
+import method.models.BieuMauMethod;
 
 @WebServlet("/TaoBieuMau")
 public class TaoBieuMau extends HttpServlet {
@@ -31,9 +31,10 @@ public class TaoBieuMau extends HttpServlet {
 		String tenbieumau=request.getParameter("tenbieumau");
 		String namhoc=request.getParameter("namhoc");
 		String nguoitao=session.getAttribute("taikhoan").toString();		
-		TaoBieuMauDG tao=new TaoBieuMauDG();
-		
+		BieuMauMethod tao=new BieuMauMethod();
+		System.out.println("ok");
 		String button=request.getParameter("btn");
+		request.setAttribute("loadtrang", "");
 		switch(button)
 		{
 			case "Tao":

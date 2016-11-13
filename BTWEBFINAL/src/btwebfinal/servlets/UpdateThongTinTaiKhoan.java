@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import method.models.ThongTinUser;
-import method.models.UpdateTaiKhoan;
+
+import method.models.TaiKhoanMethod;
+import thongtin.ThongTinUser;
+
 
 @WebServlet("/UpdateThongTinTaiKhoan")
 public class UpdateThongTinTaiKhoan extends HttpServlet {
@@ -43,7 +45,7 @@ public class UpdateThongTinTaiKhoan extends HttpServlet {
 		
 		ThongTinUser t=new ThongTinUser(tentaikhoan,matkhau,chucvu,hoten,ngaysinh,gioitinh,noisinh
 				,dantoc,socmnd,tongiao,diachi,sdt,email,ghichu);
-		UpdateTaiKhoan up=new UpdateTaiKhoan();
+		TaiKhoanMethod up=new TaiKhoanMethod();
 		boolean check=up.UpdateTK(t);
 		if(check==true)
 		{

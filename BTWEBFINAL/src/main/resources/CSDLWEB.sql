@@ -1,9 +1,9 @@
-create database CSDLWEBKPI;
-use CSDLWEBKPI;
+create database CSDLWEBKPI2;
+use CSDLWEBKPI2;
 create table role
 (
 	roleid int primary key,
-    rolename nvarchar(100)
+    rolename nvarchar(1000)
 );
 insert into role value(1,"Giảng Viên");
 insert into role value(2,"Hiệu Trưởng");
@@ -16,17 +16,17 @@ create table users
 (
 	username char(20) primary key,
     pass char(20),
-    hoten nvarchar(100),
+    hoten nvarchar(1000),
     ngaysinh date,
     gioitinh bit,
-    noisinh nvarchar(100),
-    dantoc nvarchar(100),
+    noisinh nvarchar(1000),
+    dantoc nvarchar(500),
     socmnd char(20),
     tongiao nvarchar(100),
-    diachi nvarchar(500),
+    diachi nvarchar(5000),
     sdt char(15),
-    email char(100),
-    ghichu nvarchar(500),
+    email char(1000),
+    ghichu nvarchar(5000),
     roleid int,
     foreign key (roleid) references role(roleid)
 );
@@ -40,7 +40,7 @@ insert into users value("admin","123456","Nguyễn Văn F","1996/10/20",1,"Biên
 create table bieumau
 (
 	mabieumau char(100) primary key,
-    tenbieumau nvarchar(100),
+    tenbieumau nvarchar(5000),
     namhoc char(50),
     nguoitao char(20),
     foreign key (nguoitao) references users(username)
@@ -48,14 +48,14 @@ create table bieumau
 create table nhomtieuchi
 (
 	manhomtc char(100) primary key,
-    tennhomtc nvarchar(100),
+    tennhomtc nvarchar(5000),
     mabieumau char(100),
     foreign key (mabieumau) references bieumau(mabieumau)
 );
 create table tieuchi
 (
 	matieuchi char(100) primary key,
-    tentieuchi nvarchar(500),
+    tentieuchi nvarchar(5000),
     manhomtc char(100),
     mabieumau char(100),
     diemtudanhgia int,
@@ -68,12 +68,12 @@ create table tieuchi
 create table thongbao
 (
 	mathongbao char(100) primary key,
-    tenthongbao nvarchar(200),
-    noidung nvarchar(1000),
+    tenthongbao nvarchar(5000),
+    noidung nvarchar(5000),
     nguoigui char(20),
     thoigian datetime,
     nguoinhan char(20),
-    trangthai nvarchar(100),
+    trangthai nvarchar(500),
     foreign key (nguoigui) references users(username),
     foreign key (nguoinhan) references users(username)
 );
@@ -84,7 +84,7 @@ create table phancongcv
     mabieumau char(100),
     matieuchi char(100),
     ngayhoanthanh date,
-    trangthai nvarchar(100),
+    trangthai nvarchar(500),
     diemtudanhgia int,
     diemtruongkhoa int,
     diemtruongbomon int,
@@ -97,7 +97,7 @@ create table thuchienbieumau
 (
 	mabieumau char(100),
     nguoithuchien char(20),
-    trangthai nvarchar(100),
+    trangthai nvarchar(500),
     matieuchi char(100),
     diemtudanhgia int,
     diemtruongbomon int,

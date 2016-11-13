@@ -9,6 +9,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import thongtin.ChuoiKetNoiMYSQL;
+import thongtin.ThongTinUser;
+
 public class LayThongTinUser {
 	public ThongTinUser LayThongTin(String username,String password) 
 	{

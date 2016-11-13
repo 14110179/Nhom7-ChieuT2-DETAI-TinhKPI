@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import method.models.KiemTraDangNhap;
+import method.models.DangNhapMethod;
 import method.models.LayThongTinUser;
 
 @WebServlet("/Login")
@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 		String username=request.getParameter("InputUserName1");
 		String password=request.getParameter("InputPassword1");
 		String chucvu=request.getParameter("chucvu");
-		KiemTraDangNhap ktdn=new KiemTraDangNhap();
+		DangNhapMethod ktdn=new DangNhapMethod();
 		LayThongTinUser ltt=new LayThongTinUser();
 		String message="";	    
 		boolean ktra=ktdn.checkTaiKhoan(username,password);

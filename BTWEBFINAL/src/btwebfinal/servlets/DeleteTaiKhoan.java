@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import method.models.DeleteTK;
+
+import method.models.TaiKhoanMethod;
 
 @WebServlet("/DeleteTaiKhoan")
 public class DeleteTaiKhoan extends HttpServlet {
@@ -23,7 +24,7 @@ public class DeleteTaiKhoan extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tk=request.getParameter("taikhoan2");
-		DeleteTK xoa= new DeleteTK();
+		TaiKhoanMethod xoa= new TaiKhoanMethod();
 		boolean check=xoa.DeleteTKhoan(tk);
 		if(check==true)
 		{

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import method.models.ThemTaiKhoan;
+import method.models.TaiKhoanMethod;
 
 
 @WebServlet("/SearchTaiKhoan")
@@ -26,7 +26,7 @@ public class SearchTaiKhoan extends HttpServlet {
 		
 		String username=request.getParameter("noidungtimkiem");
 		
-		ThemTaiKhoan kt=new ThemTaiKhoan();
+		TaiKhoanMethod kt=new TaiKhoanMethod();
 		if(kt.checkUsername(username)==true)
 		{
 			request.setAttribute("taikhoansearch",username);	

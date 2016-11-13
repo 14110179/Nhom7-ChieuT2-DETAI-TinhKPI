@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import method.models.ThemTaiKhoan;
-import method.models.ThongTinUser;
+import method.models.TaiKhoanMethod;
+import thongtin.ThongTinUser;
 
 @WebServlet("/InsertTaiKhoan")
 public class InsertTaiKhoan extends HttpServlet {
@@ -48,7 +48,7 @@ public class InsertTaiKhoan extends HttpServlet {
 		String ghichu=request.getParameter("ghichu");
 		ThongTinUser t=new ThongTinUser(tentaikhoan,matkhau,chucvu,hoten,ngaysinh,gioitinh,noisinh
 				,dantoc,socmnd,tongiao,diachi,sdt,email,ghichu);
-		ThemTaiKhoan ttk=new ThemTaiKhoan();
+		TaiKhoanMethod ttk=new TaiKhoanMethod();
 		boolean check=ttk.InsertTK(t);
 		if(check==true)
 		{

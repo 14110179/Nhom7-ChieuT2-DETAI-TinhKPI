@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList" %>
-<%@page import="method.models.TaiKhoan" %>
-<%@page import="method.models.ThongTinTaiKhoan" %>
-<%@ page import="method.models.ThongTinUser" %>
+<%@page import="thongtin.TaiKhoan" %>
+<%@ page import="thongtin.ThongTinUser" %>
 <%@ page import="method.models.LayThongTinUser" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>

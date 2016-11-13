@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import method.models.DoiMatKhau;
+import method.models.DangNhapMethod;
 
 @WebServlet("/DoiMatKhau")
 public class DoiMK extends HttpServlet {
@@ -32,7 +32,7 @@ public class DoiMK extends HttpServlet {
 		String password=request.getParameter("matkhaucu");
 		String passnew=request.getParameter("matkhaumoi");
 		String passnew2=request.getParameter("matkhaunhaplai");
-		DoiMatKhau a=new DoiMatKhau();		
+		DangNhapMethod a=new DangNhapMethod();		
 		boolean kt=a.DoiMKhau(username, password, passnew, passnew2);	
 		String text="";
 		if(kt==true)
