@@ -83,7 +83,7 @@
       		<tr id="add1">
       			<td style="background-color: lightblue;">
       				<a href="#them1"><span style="align:right;" class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#them1"></span></a>
-      				Lĩnh vực kiến thức      				
+      				Lĩnh vực kiến thứLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức c      				
       			<!--Button Thêm-->
       			<div class="modal modal-md " id="them1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       			<div class="modal-dialog">
@@ -243,7 +243,7 @@
        		</tr> 
        	</thead>
        	<tbody>
-       		<tr style="height: auto;" colspan="4">     	
+       		<tr style="height: auto;" >     	
        			<td  height="10px">	
        			 	<table cellspacing="0" cellpadding="4" border="0"  class="table">
        			 		<tr align="center" style="height:24px;">
@@ -261,13 +261,13 @@
       		<tr >
       			<td colspan="4"  style="background-color: lightblue;">
       				
-      				Lĩnh vực kiến thức      				
+      				Lĩnh vực kiến thứcLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức       				
       	    			
       			</td>      			
       		</tr>
-      		<tr colspan="4">
+      		<tr>
       			<td>
-      				Kiến thức cơ bản.
+      				Kiến thức cơ bảnLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức .
       			</td>
       			<td>
       				 <select>
@@ -315,9 +315,9 @@
        				</select>
       			</td>
       		</tr>
-      		<tr colspan="4">
+      		<tr >
       			<td>
-      				Kiến thức về tâm Kiến thức về tâm lí học sư phạm và tâm lí học lứa tuổi.
+      				Kiến thức về tâm Kiến thứcLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức  về tâm lí học sư phạm và tâm lí học lứa tuổi.
       			</td>
       			<td>
       				 <select>
@@ -424,7 +424,7 @@
        				</select>
       			</td>
       		</tr>
-      		<tr colspan="4">
+      		<tr >
       			<td>
       				Đạo đức, nhân cách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
       			</td>
@@ -476,12 +476,12 @@
       		</tr>
       		<tr>
       			<td colspan="4" style="background-color: lightblue;">
-      			Mục tiêu của khoa
+      			Mục tiêu của khoLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thứLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức c a
       			</td>
       		</tr>
-      		<tr colspan="4">
+      		<tr >
       			<td>
-      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao động.
+      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức động.
       			</td>
       			<td>
       				 <select>
@@ -529,9 +529,9 @@
        				</select>
       			</td>
       		</tr>
-      		<tr colspan="4">
+      		<tr >
       			<td>
-      				Đạo đức, nhân cách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
+      				Đạo đức, nhân cLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức ách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
       			</td>
       			<td>
       				 <select>

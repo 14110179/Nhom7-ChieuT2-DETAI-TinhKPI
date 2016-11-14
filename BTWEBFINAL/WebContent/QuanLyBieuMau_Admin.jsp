@@ -83,7 +83,8 @@
         	
 		});
      </script>
-	 <div class="container">
+	 <div class="container" >
+	 
         <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
       		<tr>
         		<td height="24"></td>
@@ -99,6 +100,10 @@
         		</td>
       		</tr>
       </table>
+    <div class="container" style="background-repeat: no-repeat;">
+    <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8"> 
 		<ul class="pager" style=" align:center;">
     			<li class="previous"><a onclick="onTaoBM()" href="#TaoBM" data-toggle="tab">&larr;Tạo biểu mẫu</a></li>
     			<li class="next"><a onclick="onChinhSuaBM()" href="#ChinhSuaBM" data-toggle="tab">Chỉnh sửa biểu mẫu&rarr;</a></li>
@@ -106,10 +111,6 @@
     <div class="tab-content">
     <!--Tạo biểu mẫu-->
     <div class="tab-pane" id="TaoBM" > 
-    <div class="container" style="background-repeat: no-repeat;">
-	<div class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
     	<form action="TaoBieuMau" method="post">
     	<div id="11" class="form-group " align="left">				
      		
@@ -139,17 +140,10 @@
             <button type="submit" class="btn btn-default center-block"  name="btn" value="Xoa">Xóa biểu mẫu</button>
         </div> 
         </form>
-    </div>
-    <div class="col-lg-4"></div>
-    </div>
-    </div>
-    </div>
+   
+    </div>   
     <!--Chỉnh sửa biểu mẫu-->
     <div class="tab-pane" id="ChinhSuaBM" >   	
-	<div class="container" style="background-repeat: no-repeat;">
-	<div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
     <form action="NhomTieuChi" method="post">
     <%
     	LayDanhSachBieuMau t=new LayDanhSachBieuMau();
@@ -171,37 +165,39 @@
    <button type="submit" id="" class="btn btn-primary" name="btn" value="refresh" ><span class="glyphicon glyphicon-refresh"></span></button>
     
     
-      <table id="formdki" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
-   		<tbody>
+      <table id="" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
+   		
+   		<thead>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th scope="col"><p align="center">Phiếu Đăng Ký</p></th> 
-       			<th><p align="center">Xóa</p></th> 
-       			<th><p align="center">Thêm tiêu chí</p></th>       			
-       		</tr>       		
+       			<th colspan="3" scope="col"><p align="center">Phiếu Đăng Ký</p></th> 
+       			<!-- <th scope="col" style="width:50px;"><p align="center">Xóa</p></th> 
+       			<th scope="col" style="width:160px; align:center;"><p align="center">Thêm tiêu chí</p></th>        -->			
+       		</tr>    
+       	</thead>
+       	<tbody>		
        		<%
        			if(request.getAttribute("danhsachntc")!=null)
     			for(DSNhomTC item : (ArrayList<DSNhomTC>)request.getAttribute("danhsachntc"))
     			{  		
     				String DeleteURL="DeleteNhomTieuChi?mantc="+item.getMaNTC()+"&mabieumau="+item.getMaBieuMau();
     		%> 
-    			<tr>
-    				<td style="background-color: lightblue;">
-    					<%=item.getNoiDung()%>
-    				</td>
-    				<td style="width:5%; align:center;"><a href="<%=DeleteURL%>"><span class="glyphicon glyphicon-remove" style="align:center;"></span></a></td>
-    				<td style="width:15%; align:center;"><a href="#"><span class="glyphicon glyphicon-plus" style="align:center;"></span></a></td>
+    			<tr style="width: 890px;">
+    				<td style="background-color: lightblue; "><%=item.getNoiDung()%></td>   					   				
+    				<td style=" align:center;"><a href="<%=DeleteURL%>">Xóa</a></td>
+    				<td style=" align:center;"><a href="#">Thêm tiêu chí</a></td>
     			</tr>
-       		<%	} %>	 		
-      		
+       		<%	} %>	
+       				
+      	</tbody>	
       	<tfoot>
       		<tr align="center">
-      			<td colspan="4">
+      			<td colspan="3">
       				<button type="button" id="taontc" class="btn btn-primary" >Tạo nhóm tiêu chí</button>
       			</td>
       		</tr>
     	</tfoot>
       		
-    	</tbody>
+    	
     	</table>
     	<script>
 			$(document).ready(function(){
@@ -216,11 +212,17 @@
 			<button type="submit" id="" class="btn btn-primary" name="btn" value="themtieuchi">Xác nhận</button>
 		</div>
 	</form>
+	
+	</div>
+	
+	
+	
+    <!--  -->
+   
+    
+	</div>
 	</div>
 	<div class="col-lg-2"></div>
-    <!--  -->
-    </div>
-    </div>
 	</div>
 	</div>
 	</div>

@@ -1,5 +1,5 @@
-create database CSDLWEBKPI2;
-use CSDLWEBKPI2;
+create database CSDLWEBKPI;
+use CSDLWEBKPI;
 create table role
 (
 	roleid int primary key,
@@ -25,7 +25,7 @@ create table users
     tongiao nvarchar(100),
     diachi nvarchar(5000),
     sdt char(15),
-    email char(1000),
+    email char(200),
     ghichu nvarchar(5000),
     roleid int,
     foreign key (roleid) references role(roleid)
