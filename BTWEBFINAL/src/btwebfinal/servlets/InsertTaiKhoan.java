@@ -2,7 +2,6 @@ package btwebfinal.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,12 +51,15 @@ public class InsertTaiKhoan extends HttpServlet {
 		boolean check=ttk.InsertTK(t);
 		if(check==true)
 		{
-			request.setAttribute("ketqua2", "thanhcong");
+			request.setAttribute("ketqua2", "thanhcong");			
 		}
 		else
+		{
 			request.setAttribute("ketqua2", "thatbai");
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyNguoiDung_Admin.jsp");
-		  dispatcher.forward(request, response);
+		}
+		response.sendRedirect("QuanLyNguoiDung_Admin.jsp");
+		// RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyNguoiDung_Admin.jsp");
+		// dispatcher.forward(request, response);
 	}
 
 }

@@ -31,26 +31,22 @@ public class TaoBieuMau extends HttpServlet {
 		String tenbieumau=request.getParameter("tenbieumau");
 		String namhoc=request.getParameter("namhoc");
 		String nguoitao=session.getAttribute("taikhoan").toString();		
-		BieuMauMethod tao=new BieuMauMethod();
-		System.out.println("ok");
-		String button=request.getParameter("btn");
-		request.setAttribute("loadtrang", "");
+		BieuMauMethod tao=new BieuMauMethod();		
+		String button=request.getParameter("btn");		
 		switch(button)
 		{
 			case "Tao":
 			{
-				request.setAttribute("suabieumau","");
-				request.setAttribute("xoabieumau","");	
+					
 				boolean check= tao.TaoBieuMau(mabieumau, tenbieumau, namhoc, nguoitao);
 				if(check==true)
 				{
-					request.setAttribute("taobieumau","thanhcong");	
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}
 				else
 				{
-					request.setAttribute("taobieumau","thatbai");	
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -59,18 +55,17 @@ public class TaoBieuMau extends HttpServlet {
 			
 			case "Sua":
 			{
-				request.setAttribute("taobieumau","");
-				request.setAttribute("xoabieumau","");	
+				
 				boolean check= tao.ChinhSuaBM(mabieumau, tenbieumau, nguoitao);
 				if(check==true)
 				{
-					request.setAttribute("suabieumau","thanhcong");
+				
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}
 				else
 				{
-					request.setAttribute("suabieumau","thatbai");
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -79,18 +74,17 @@ public class TaoBieuMau extends HttpServlet {
 			case "Xoa":
 			{
 				
-				request.setAttribute("taobieumau","");	
-				request.setAttribute("suabieumau","");
+				
 				boolean check= tao.XoaBieuMau(mabieumau);
 				if(check==true)
 				{
-					request.setAttribute("xoabieumau","thanhcong");
+			
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}
 				else
 				{
-					request.setAttribute("xoabieumau","thatbai");
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
 					dispatcher.forward(request, response);
 				}

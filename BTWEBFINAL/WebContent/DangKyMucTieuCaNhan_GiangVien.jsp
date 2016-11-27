@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="method.models.LayDanhSachBieuMau" %>
+<%@ page import="method.models.TieuChiMethod" %>
+<%@ page import="method.models.NhomTieuChiMethod" %>
+<%@ page import="method.models.DangKyBieuMauMethod" %>
+<%@ page import="thongtin.DanhSachBieuMau" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="thongtin.DSNhomTC"%>
+<%@page import="thongtin.DSTieuChi"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +38,13 @@
           document.getElementById('ChamDiem').style.display = 'block';
         }       
       </script>
-        
+        <script>
+        	<% if(request.getAttribute("message")=="ThatBai"){%>
+        		alert("Chưa đăng ký");
+        	<% }if(request.getAttribute("message")=="ThanhCong"){%>
+        		alert("Đăng ký thành công");
+        	<%}%>
+        </script>
         
 </head>
 <body>
@@ -71,531 +85,198 @@
     			<li class="next"><a onclick="onChamDiem()" href="#ChamDiem" data-toggle="tab">Chấm điểm &rarr;</a></li>
     		</ul> 	
     	<br>
-    	<span style="color:red;">Thời gian còn lại: 30 ngày</span>
-    	<div class="tab-content">
-    	<div class="tab-pane" id="DangKy" >   	  	
-    	<table id="formdki" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
-   		<tbody>
+    	<!--  -->
+    <div class="tab-content">
+    <div class="tab-pane" id="DangKy" >   
+    <form action="DangKyBieuMau" method="post">
+    	<br>		   
+    <table id="#" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style=" width:900px;word-wrap: break-word;  no-repeat; color:#333333; text-align: justify;" align="center">  		
+   		   	<thead>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th scope="col"><p align="center">Phiếu Đăng Ký (Chưa được phê duyệt)</p></th> 
-       			
-       		</tr>       		
-      		<tr id="add1">
-      			<td style="background-color: lightblue;">
-      				<a href="#them1"><span style="align:right;" class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#them1"></span></a>
-      				Lĩnh vực kiến thứLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức c      				
-      			<!--Button Thêm-->
-      			<div class="modal modal-md " id="them1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      			<div class="modal-dialog">
-          			<div class="modal-content">
-          				<div align="center" class="modal-header">
-              				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-              				<h4 class="modal-title">Bạn có muốn thêm đăng ký không?</h4>
-          				</div> <br>
-          				<div class="modal-body">
-                			<p>Chọn mục cần đăng ký</p>                  								            								
-                			<select size="5" id="muctieu1" name="" data-toggle="tooltip" data-placement="top" style="width:100%;">           		
-           						<option id="check" value="Mục tiêu 1">Mục tiêu 1</option>
-            					<option id="check" value="Mục tiêu 2">Mục tiêu 2</option>
-            					<option id="check" value="Mục tiêu 3">Mục tiêu 3</option>
-              					<option id="check" value="Mục tiêu 4">Mục tiêu 4</option>
-               					<option id="check" value="Mục tiêu 5">Mục tiêu 5</option>
-                				<option id="check" value="Mục tiêu 6">Mục tiêu 6</option>
-                				<option id="check" value="Mục tiêu 7">Mục tiêu 7</option>
-              					<option id="check" value="Mục tiêu 8">Mục tiêu 8</option>
-               					<option id="check" value="Mục tiêu 9">Mục tiêu 9</option>
-                				<option id="check" value="Mục tiêu 10">Mục tiêu 10</option>
-         					</select> 
-              			</div>
-            			<button id="btnthem1" type="button" class="btn btn-primary" data-dismiss="modal" align="center" >Thêm</button>
-            			<button type="button" class="btn btn-default" data-dismiss="modal" >Hủy bỏ</button>            
-          			</div>  
-          		</div>
-      			</div>
-      			<!--  -->
-      			<!--Script-->
-      			<script>
-					$(document).ready(function(){
-    				$("#btnthem1").click(function(){      		
-    					var text=$("#muctieu1").find(":selected").val()    				
-    					$("<tr><td>"+"<a href='#'><span id='btnremove' style='color:red;' class='glyphicon glyphicon-remove form-control-feedback'></span></a>"+text+"</td></tr>").insertAfter("#add1");
-    				});
-					});
-				</script>
-				<script>
-					$(document).ready(function(){
-					var d ;
-					$(document).on("click","#btnremove",function(){
-					d = $(this).closest("tr");					
-					d.remove();
-				})
-				})
-				</script>
-      			<!--  -->     			
-      			</td>      			
-      		</tr>
-      		<tr>
-      			<td>
-      				Kiến thức cơ bản.
-      			</td>
-      		</tr>
-      		<tr>
-      			<td>
-      				Kiến thức về tâm Kiến thức về tâm lí học sư phạm và tâm lí học lứa tuổi.
-      			</td>
-      		</tr>
-      		<tr id="add2">
-      			<td style="background-color: lightblue;">
-      				<a href="#them2"><span  class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#them2"></span></a>
-      				Lĩnh vực Phẩm chất chính trị, lối sống
-      				
-      			<!--Button Thêm-->
-      			<div class="modal modal-md " id="them2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      			<div class="modal-dialog">
-          			<div class="modal-content">
-          				<div align="center" class="modal-header">
-              				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-              				<h4 class="modal-title">Bạn có muốn thêm đăng ký không?</h4>
-          				</div>
-          				<div class="modal-body">
-                			<p>Chọn mục cần đăng ký</p>                  								            								
-                			<select size="5" id="muctieu2" name="" data-toggle="tooltip" data-placement="top" style="width:100%;">           		
-           						<option id="check" value="Mục tiêu 1">Mục tiêu 1</option>
-            					<option id="check" value="Mục tiêu 2">Mục tiêu 2</option>
-            					<option id="check" value="Mục tiêu 3">Mục tiêu 3</option>
-              					<option id="check" value="Mục tiêu 4">Mục tiêu 4</option>
-               					<option id="check" value="Mục tiêu 5">Mục tiêu 5</option>
-                				<option id="check" value="Mục tiêu 6">Mục tiêu 6</option>
-                				<option id="check" value="Mục tiêu 7">Mục tiêu 7</option>
-              					<option id="check" value="Mục tiêu 8">Mục tiêu 8</option>
-               					<option id="check" value="Mục tiêu 9">Mục tiêu 9</option>
-                				<option id="check" value="Mục tiêu 10">Mục tiêu 10</option>
-         					</select> 
-              			</div>
-            			<button id="btnthem2" type="button" class="btn btn-primary" data-dismiss="modal" align="center" >Thêm</button>
-            			<button type="button" class="btn btn-default" data-dismiss="modal" >Hủy bỏ</button>            
-          			</div>  
-          		</div>
-      			</div>
-      			<!--  -->
-      			<!--Script-->
-      			<script>
-					$(document).ready(function(){
-    				$("#btnthem2").click(function(){   
-    					var text=$("#muctieu2").find(":selected").val()   					 				
-    					$("<tr><td>"+"<a href='#'><span id='btnremove' style='color:red;' class='glyphicon glyphicon-remove form-control-feedback'></span></a>"+text+"</td></tr>").insertAfter("#add2");
-    				});
-					});
-				</script>
-				<script>
-					$(document).ready(function(){
-					var d ;
-					$(document).on("click","#btnremove",function(){
-					d = $(this).closest("tr");					
-					d.remove();
-				})
-				})
-				</script>
-      			<!--  -->
-      			</td>      			
-      		</tr>
-      		<tr>
-      			<td>
-      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao động.
-      			</td>
-      		</tr>
-      		<tr>
-      			<td>
-      				Đạo đức, nhân cách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
-      			</td>
-      		</tr>
-      		
-      		<tr>
-      			<td style="background-color: lightblue;">
-      			Mục tiêu của khoa
-      			</td>
-      		</tr>
-      		<tr>
-      			<td>
-      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao động.
-      			</td>
-      		</tr>
-      		<tr>
-      			<td>
-      				Đạo đức, nhân cách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
-      			</td>
-      		</tr>
-      		<tr align="center">
-      			<td>
-      				<button type="button" class="btn btn-primary" >Đăng Ký</button>
-      			</td>
-      		</tr>
+       			<th  scope="col" style="width:670px;"><p align="center">Phiếu Đăng Ký</p></th>  
+       			<th colspan="" scope="col" style="width:50px;"><p align="center">Đăng Ký</p></th>
+       			<th colspan="" scope="col" style="width:50px;"><p align="center">Điểm Tối Đa</p></th> 	 		 			     			
+       		</tr> 
+       	</thead>     	
+       	<tbody>	
+      		<%
+      			int i=0;   	
+      			NhomTieuChiMethod mt=new NhomTieuChiMethod();
+      			ArrayList<DSNhomTC> dsntc=new ArrayList<DSNhomTC>();
+				dsntc=mt.getAllNhomTieuChi("BM2016-2017");
+       			if(dsntc!=null)
+    			for(DSNhomTC item : dsntc)
+    			{  		
+    				i++;
+    				int j=0;    				
+    				TieuChiMethod tcmt=new TieuChiMethod();
+    				ArrayList<DSTieuChi> dstieuchi=tcmt.getAllTieuChi(item.getMaNTC());
+    		%> 
+    			<tr>
+    				<td style="background-color: lightblue;"><strong><div style="word-wrap: break-word;text-align: justify; width:655px;"><%=i%>.<%=item.getNoiDung()%></div></strong></td>   					   				
+    				<td style=" align:center;"></td>
+    				<td style=" align:center;"></td>
+    			</tr>
+       		<%	
+       				for(DSTieuChi tc : dstieuchi)
+       				{
+       					j++;       					
+       					%>
+       					<tr>
+       						<td><div style="word-wrap: break-word;text-align: justify; width:655px;"><%=i%>.<%=j%><br><%=tc.getNoiDung()%></div></td>
+       						<%
+       							DangKyBieuMauMethod dkbmmt=new DangKyBieuMauMethod();
+       							if(dkbmmt.CheckDK(session.getAttribute("taikhoan").toString(), tc.getMaTieuChi())==true) 
+       							{
+       						%>
+       								<td>
+       								<label class="btn btn-success active">
+       								<%-- <input type="checkbox" disabled="disabled" name="checkbox[]" autocomplete="off" value="<%=tc.getMaTieuChi()%>"> --%>
+       								<span class="glyphicon glyphicon-ok"></span></label>
+       								</td>
+       						<%
+       							}
+       							else
+       							{
+       						%>
+       								<td><input type="checkbox" name="checkbox[]" value="<%=tc.getMaTieuChi()%>"></input></td>
+       						<%	} %>
+       						<td><%=tc.getDiemToiDa()%></td>
+       					</tr>
+       		<%
+       				}
+    			} 
+    			
+    		%>
+     		      		      		     		
     	</tbody>
-    	</table>
-    	
-    	</div>
-    	<div class="tab-pane" id="ChamDiem" >
-    	<table id="formdki" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">  		
-   		<thead>
+    	<tfoot>
+      		<tr align="center">
+      			<td colspan="3">
+      				<button type="submit" id="taontc" class="btn btn-primary" >Đăng Ký</button>
+      			</td>
+      		</tr>
+    	</tfoot>
+    </table>
+    </form>
+    </div>
+    <!--  -->
+    <div class="tab-pane" id="ChamDiem" > 
+    	<table id="#" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style=" width:900px;word-wrap: break-word;  no-repeat; color:#333333; text-align: justify;" align="center">  		
+   		   	<thead>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th  scope="col"><p align="center">Phiếu Đăng Ký (Đã phê duyệt)</p></th>  
+       			<th  scope="col"><p align="center">Phiếu Đăng Ký</p></th>  
        			<th colspan="3" scope="col"><p align="center">Bảng Điểm</p></th>  		 			     			
        		</tr> 
-       	</thead>
-       	<tbody>
-       		<tr style="height: auto;" >     	
+       	</thead>     	
+       	<tbody>	
+       		<tr style="height: auto;" colspan="4">     	
        			<td  height="10px">	
        			 	<table cellspacing="0" cellpadding="4" border="0"  class="table">
-       			 		<tr align="center" style="height:24px;">
-       			 			<td> A : Giảng viên </td>  
-       			 			<td> B : Trưởng bộ môn </td>   
-       			 			<td> C : Trưởng khoa </td>   
+       			 		<tr align="center" style="height:auto;">
+       			 			<td> A : Giảng Viên</td>
+       			 			<td> B : Trưởng bộ môn</td>  
+       			 			<td> C : Trưởng khoa</td>        			 			
        			 		</tr>
        			 	</table>     
        			 </td>
        			 <td>A</td>
-       			 <td>B</td>
-       			 <td>C</td>	
-       			 	
-      		</tr>      		
-      		<tr >
-      			<td colspan="4"  style="background-color: lightblue;">
-      				
-      				Lĩnh vực kiến thứcLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức       				
-      	    			
-      			</td>      			
-      		</tr>
-      		<tr>
-      			<td>
-      				Kiến thức cơ bảnLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức .
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      		<tr >
-      			<td>
-      				Kiến thức về tâm Kiến thứcLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức  về tâm lí học sư phạm và tâm lí học lứa tuổi.
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      		<tr>
-      			<td colspan="4"  style="background-color: lightblue;">
-      				
-      				Lĩnh vực Phẩm chất chính trị, lối sống
-      				
-      			
-      	
-      			</td>      			
-      		</tr>
-      		<tr colspan="4">
-      			<td>
-      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao động.
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      		<tr >
-      			<td>
-      				Đạo đức, nhân cách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      		<tr>
-      			<td colspan="4" style="background-color: lightblue;">
-      			Mục tiêu của khoLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thứLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức c a
-      			</td>
-      		</tr>
-      		<tr >
-      			<td>
-      				Chấp hành quy chế của Ngành, quy định của nhà trường, kỉ luật lao Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức động.
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      		<tr >
-      			<td>
-      				Đạo đức, nhân cLĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức Lĩnh vực kiến thức ách và lối sống lành mạnh, trong sáng của nhà giáo, tinh thần đấu tranh chống các biểu hiện tiêu cực, ý thức phấn đấu vươn lên trong nghề nghiệp, sự tín nhiệm của đồng nghiệp, học sinh và cộng đồng.
-      			</td>
-      			<td>
-      				 <select>
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      			<td>
-					<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-				</td>
-      			<td>
-      				<select disabled="true">
-        				<option selected="selected" value="0" >0</option>
-        				<option  value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>
-        				<option value="6">6</option>
-        				<option value="7">7</option>
-        				<option value="8">8</option>
-        				<option value="9">9</option>
-        				<option value="10">10</option>
-       				</select>
-      			</td>
-      		</tr>
-      	</tbody>
-      	<tfoot>
+       			 <td>B</td>  
+       			 <td>C</td>     			   			 	
+      		</tr>  
+      		<%
+      			int i1=0;   	
+      			NhomTieuChiMethod mt1=new NhomTieuChiMethod();
+      			ArrayList<DSNhomTC> dsntc1=new ArrayList<DSNhomTC>();
+      			dsntc1=mt.getAllNhomTieuChi("BM2016-2017");
+       			if(dsntc!=null)
+    			for(DSNhomTC item : dsntc1)
+    			{  		
+    				i1++;
+    				int j1=0;    				
+    				TieuChiMethod tcmt1=new TieuChiMethod();
+    				ArrayList<DSTieuChi> dstieuchi1=tcmt1.getAllTieuChi2(item.getMaNTC(),"BM2016-2017",session.getAttribute("taikhoan").toString());
+    		%> 
+    			<tr>
+    				<td style="background-color: lightblue;"><strong><div style="word-wrap: break-word;text-align: justify; width:655px;"><%=i1%>.<%=item.getNoiDung()%></div></strong></td>   					   				
+    				<td style=" align:center;"></td>
+    				<td style=" align:center;"></td>
+    				<td style=" align:center;"></td>
+    			</tr>
+       		<%	
+       				for(DSTieuChi tc : dstieuchi1)
+       				{
+       					j1++;       					
+       					%>
+       					<tr>
+       						<td><div style="word-wrap: break-word;text-align: justify; width:655px;"><%=i1%>.<%=j1%><br><%=tc.getNoiDung()%><br></div></td>       				      						
+       						<td>
+       							<select>
+        							<option selected="selected" value="0" >0</option>
+        							<option  value="1">1</option>
+        							<option value="2">2</option>
+        							<option value="3">3</option>
+        							<option value="4">4</option>
+        							<option value="5">5</option>
+        							<option value="6">6</option>
+        							<option value="7">7</option>
+        							<option value="8">8</option>
+        							<option value="9">9</option>
+        							<option value="10">10</option>
+       							</select>
+       						</td>      						
+       						<td>
+       							<select disabled="disabled">
+        							<option selected="selected" value="0" >0</option>
+        							<option  value="1">1</option>
+        							<option value="2">2</option>
+        							<option value="3">3</option>
+        							<option value="4">4</option>
+        							<option value="5">5</option>
+        							<option value="6">6</option>
+        							<option value="7">7</option>
+        							<option value="8">8</option>
+        							<option value="9">9</option>
+        							<option value="10">10</option>
+       							</select>
+       						</td>      	    					
+       						<td>
+       							<select disabled="disabled">
+        							<option selected="selected" value="0" >0</option>
+        							<option  value="1">1</option>
+        							<option value="2">2</option>
+        							<option value="3">3</option>
+        							<option value="4">4</option>
+        							<option value="5">5</option>
+        							<option value="6">6</option>
+        							<option value="7">7</option>
+        							<option value="8">8</option>
+        							<option value="9">9</option>
+        							<option value="10">10</option>
+       							</select>
+       						</td>      	
+       					</tr>
+       		<%
+       				}
+    			} 
+    			
+    		%>
+     		      		      		     		
+    	</tbody>
+    	<tfoot>
       		<tr align="center">
       			<td colspan="4">
-      				<button type="button" class="btn btn-primary" >Xác Nhận</button>
+      				<button type="submit" id="taontc" class="btn btn-primary" >Xác Nhận</button>
       			</td>
       		</tr>
     	</tfoot>
-    	</table>
-    	
-    	</div>  
-    	</div>
+    </table>
+    </div>
+    </div>  
+    </div>
     </div>
     <div class="col-lg-2"></div>
-    </div>  
-   	</div>
-    
+    </div>    
 	</div>
 </body>
 </html>

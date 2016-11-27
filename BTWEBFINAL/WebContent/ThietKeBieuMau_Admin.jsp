@@ -87,8 +87,7 @@
        	</thead>     	
        	<tbody>	
       		<%
-      			int i=0;
-      			
+      			int i=0;   			
        			if(request.getAttribute("danhsachntc")!=null)
     			for(DSNhomTC item : (ArrayList<DSNhomTC>)request.getAttribute("danhsachntc"))
     			{  		

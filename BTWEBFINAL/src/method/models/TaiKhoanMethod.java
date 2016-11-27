@@ -14,6 +14,51 @@ import thongtin.TaiKhoan;
 import thongtin.ThongTinUser;
 
 public class TaiKhoanMethod {
+	public ArrayList<TaiKhoan> getAccout(String tentimkiem)
+	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
+		ArrayList<TaiKhoan> atk=new ArrayList<TaiKhoan>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {			
+			e.printStackTrace();
+		}
+		Connection con=null;
+		Statement stm=null;
+		ResultSet rs;	
+		try
+		{
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
+			stm=con.createStatement();
+			rs=stm.executeQuery("select username,pass,rolename from users,role where users.roleid=role.roleid and users.username LIKE '%"+tentimkiem+"%'");
+			
+		while(rs.next())
+		{			
+			String tentaikhoan=rs.getString("username");
+			String matkhau=rs.getString("pass");
+			String chucvu=rs.getString("rolename");
+			TaiKhoan tk=new TaiKhoan(tentaikhoan,matkhau,chucvu);
+			atk.add(tk);
+		}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}	
+		finally
+		{
+			
+				try {
+					con.close();
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+		}
+		return atk;
+	}
 	public ArrayList<TaiKhoan> getAllAccout()
 	{
 		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();

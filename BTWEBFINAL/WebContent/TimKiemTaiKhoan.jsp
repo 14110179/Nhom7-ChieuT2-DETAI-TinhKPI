@@ -181,6 +181,12 @@
 		</div>
 		</form>
 		<script>
+			$('#myModal').on('hidden.bs.modal', function (e) {
+				window.location="QuanLyNguoiDung_Admin.jsp";
+			})
+			
+		</script>
+		<script>
 			$(document).ready(function(){ 
     		$("#myModal").modal("show"); 
 			});

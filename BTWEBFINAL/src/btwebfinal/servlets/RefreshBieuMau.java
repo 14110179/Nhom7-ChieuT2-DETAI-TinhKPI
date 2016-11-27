@@ -22,7 +22,7 @@ public class RefreshBieuMau extends HttpServlet {
 	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ok");
+		
 		 RequestDispatcher dispatcher = request.getRequestDispatcher("/TrangDangNhap.jsp");
 		  dispatcher.forward(request, response);
 	}

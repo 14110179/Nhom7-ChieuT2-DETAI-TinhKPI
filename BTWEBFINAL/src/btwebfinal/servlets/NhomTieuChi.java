@@ -34,7 +34,6 @@ public class NhomTieuChi extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");	
-		request.setAttribute("loadtrang", "");
 		String mabieumau=request.getParameter("mabieumau");
 		String noidung=request.getParameter("noidung");
 		
@@ -54,15 +53,16 @@ public class NhomTieuChi extends HttpServlet {
 				break;
 			}
 			case "refresh":
-			{
+			{				
 				ArrayList<DSNhomTC> dsntc=new ArrayList<DSNhomTC>();
 				dsntc=mt.getAllNhomTieuChi(mabieumau);
 				request.setAttribute("danhsachntc", dsntc);
 				break;
 			}
 		}
-		request.setAttribute("loadtrang", "ChinhSuaBM");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/QuanLyBieuMau_Admin.jsp");
+				
+		//response.sendRedirect("QuanLyBieuMau_Admin.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ThietKeBieuMau_Admin.jsp");
 		dispatcher.forward(request, response);
 	}
 

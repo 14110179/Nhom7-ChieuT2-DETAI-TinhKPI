@@ -19,70 +19,12 @@
           display:  block;
         }
       </style>
-     <script>
-        function onTaoBM() {
-          document.getElementById('TaoBM').style.display = 'block';
-          document.getElementById('ChinhSuaBM').style.display = 'none';          
-        }
-
-        function onChinhSuaBM() {
-          document.getElementById('TaoBM').style.display = 'none';         
-          document.getElementById('ChinhSuaBM').style.display = 'block';
-        }       
-      </script>
+    
       <script src="js/bootstrap.min.js"></script>
       <script src="js/jquery1.12.4.min.js"></script>
 </head>
 <body>
-	<script>
-        $(document).ready(function(){
-        	<%
-				if(request.getAttribute("loadtrang")=="ChinhSuaBM")
-				{
-			%>
-				document.getElementById('ChinhSuaBM').style.display = 'block';
-				document.getElementById('TaoBM').style.display = 'none';
-			<%	}%>
-        	<%
-    			if(request.getAttribute("taobieumau")=="thanhcong")
-    			{
-    		%>
-    				alert("Tạo thành công");
-    		<%	}
-        		if(request.getAttribute("taobieumau")=="thatbai")
-        		{
-        	%>
-        			alert("Tạo thất bại!!!");
-        	<%	
-        		}
-        		if(request.getAttribute("suabieumau")=="thatbai")
-        		{
-        	%>
-        			alert("Chỉnh sửa thất bại!!!");
-        	<%
-        		}
-        		if(request.getAttribute("suabieumau")=="thanhcong")
-        		{       			       		
-        	%>
-        			alert("Chỉnh sửa thành công");
-        	<%
-        		}
-        		if(request.getAttribute("xoabieumau")=="thanhcong")
-        		{       			       		
-        	%>
-        			alert("Xóa thành công");
-        	<%
-        		}
-        		if(request.getAttribute("xoabieumau")=="thatbai")
-        		{       			       		
-        	%>
-        			alert("Xóa thất bại!!!");
-        	<%
-        		}
-        	%>
-        	
-		});
-     </script>
+	
 	 <div class="container" >
 	 
         <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
@@ -104,13 +46,10 @@
     <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8"> 
-		<ul class="pager" style=" align:center;">
-    			<li class="previous"><a onclick="onTaoBM()" href="#TaoBM" data-toggle="tab">&larr;Tạo biểu mẫu</a></li>
-    			<li class="next"><a onclick="onChinhSuaBM()" href="#ChinhSuaBM" data-toggle="tab">Chỉnh sửa biểu mẫu&rarr;</a></li>
-    	</ul> 
-    <div class="tab-content">
+		
+    
     <!--Tạo biểu mẫu-->
-    <div class="tab-pane" id="TaoBM" > 
+   
     	<form action="TaoBieuMau" method="post">
     	<div id="11" class="form-group " align="left">				
      		
@@ -138,67 +77,15 @@
             <button type="submit" class="btn btn-default center-block"  name="btn" value="Tao">Tạo biểu mẫu</button>
             <button type="submit" class="btn btn-default center-block"  name="btn" value="Sua">Chỉnh sửa biểu mẫu</button>
             <button type="submit" class="btn btn-default center-block"  name="btn" value="Xoa">Xóa biểu mẫu</button>
+            <button type="button" onclick="clickc()" class="btn btn-default center-block">Thiết kế biểu mẫu</button>
+       <script>
+       	function clickc()
+       	{
+       		window.location="ThietKeBieuMau_Admin.jsp";
+       	}
+       </script>
         </div> 
-        </form>
-   
-    </div>   
-    <!--Chỉnh sửa biểu mẫu-->
-    <div class="tab-pane" id="ChinhSuaBM" >   	
-    <form action="NhomTieuChi" method="post">
-    <%
-    	LayDanhSachBieuMau t=new LayDanhSachBieuMau();
-    	ArrayList<DanhSachBieuMau> listBM=t.getAllBieuMau();
-    %>
-  
-    <select id="mabieumau" name="mabieumau">
-    
-    
-    <%
-    	for(DanhSachBieuMau bm : listBM)
-    	{  		
-    %>
-    	<option id="bieumau" value="<%=bm.getMaBieuMau() %>"><%=bm.getMaBieuMau() %></option>
-    <%	} %>
-    </select>
-    	
-    
-   <button type="submit" id="" class="btn btn-primary" name="btn" value="refresh" ><span class="glyphicon glyphicon-refresh"></span></button>
-    
-    
-      <table id="" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style="no-repeat; color:#333333; text-align: justify;" align="center">
-   		
-   		<thead>
-   		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
-       			<th colspan="3" scope="col"><p align="center">Phiếu Đăng Ký</p></th> 
-       			<!-- <th scope="col" style="width:50px;"><p align="center">Xóa</p></th> 
-       			<th scope="col" style="width:160px; align:center;"><p align="center">Thêm tiêu chí</p></th>        -->			
-       		</tr>    
-       	</thead>
-       	<tbody>		
-       		<%
-       			if(request.getAttribute("danhsachntc")!=null)
-    			for(DSNhomTC item : (ArrayList<DSNhomTC>)request.getAttribute("danhsachntc"))
-    			{  		
-    				String DeleteURL="DeleteNhomTieuChi?mantc="+item.getMaNTC()+"&mabieumau="+item.getMaBieuMau();
-    		%> 
-    			<tr style="width: 890px;">
-    				<td style="background-color: lightblue; "><%=item.getNoiDung()%></td>   					   				
-    				<td style=" align:center;"><a href="<%=DeleteURL%>">Xóa</a></td>
-    				<td style=" align:center;"><a href="#">Thêm tiêu chí</a></td>
-    			</tr>
-       		<%	} %>	
-       				
-      	</tbody>	
-      	<tfoot>
-      		<tr align="center">
-      			<td colspan="3">
-      				<button type="button" id="taontc" class="btn btn-primary" >Tạo nhóm tiêu chí</button>
-      			</td>
-      		</tr>
-    	</tfoot>
-      		
-    	
-    	</table>
+        </form>     
     	<script>
 			$(document).ready(function(){
     		$("#taontc").click(function(){

@@ -137,5 +137,11 @@
 				window.location="QuanLyNguoiDung_Admin.jsp";
 		    });
 		</script>
+		<script>
+			$('#myModal').on('hidden.bs.modal', function (e) {
+				window.location="QuanLyNguoiDung_Admin.jsp";
+			})
+			
+		</script>
 </body>
 </html>

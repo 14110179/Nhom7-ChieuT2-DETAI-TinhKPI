@@ -5,12 +5,14 @@ public class DSTieuChi {
 	String matieuchi;
 	String manhomtc;
 	String mabieumau;
-	public DSTieuChi(String matieuchi,String noidung,String manhomtc,String mabieumau)
+	String diemtoida;
+	public DSTieuChi(String matieuchi,String noidung,String manhomtc,String mabieumau,String diemtoida)
 	{
 		this.matieuchi=matieuchi;
 		this.noidung=noidung;
 		this.manhomtc=manhomtc;
 		this.mabieumau=mabieumau;
+		this.diemtoida=diemtoida;
 	}
 	public void setMaTieuChi(String matieuchi)
 	{
@@ -19,6 +21,14 @@ public class DSTieuChi {
 	public String getMaTieuChi()
 	{
 		return this.matieuchi;
+	}
+	public void setDiemToiDa(String diemtoida)
+	{
+		this.diemtoida=diemtoida;
+	}
+	public String getDiemToiDa()
+	{
+		return this.diemtoida;
 	}
 	public void setNoiDung(String noidung)
 	{

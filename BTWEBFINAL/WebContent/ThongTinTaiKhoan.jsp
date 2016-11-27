@@ -185,8 +185,10 @@
   			</div>
 		</div>
 		</form>
+		
+			
 		<script>
-			$(document).ready(function(){ 
+			$(document).ready(function(){ 				
     		$("#myModal").modal("show"); 
 			});
 			$("#myBtn1").click(function(){
@@ -195,6 +197,12 @@
 			$("#myBtn2").click(function(){
 				window.location="QuanLyNguoiDung_Admin.jsp";
 		    });
+		</script>
+		<script>
+			$('#myModal').on('hidden.bs.modal', function (e) {
+				window.location="QuanLyNguoiDung_Admin.jsp";
+			})
+			
 		</script>
 </body>
 </html>

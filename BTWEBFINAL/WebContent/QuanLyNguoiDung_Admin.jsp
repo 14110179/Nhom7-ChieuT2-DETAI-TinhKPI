@@ -20,7 +20,27 @@
       <script src="js/jquery1.12.4.min.js"></script>
 </head>
 <body>
-	<script>
+<!-- <script>
+	function loadtable(){
+		var timkiem=document.getElementById("ndtimkiem").value; ;		
+		$.get('LoadDSTaiKhoan',{username:timkiem},function(responseJson){
+			if(responseJson!=null){
+				$("#dstaikhoantable").find("tr:gt(0)").remove();
+				var table1=$("#dstaikhoantable");
+				$.each(responseJson,function(key,value){
+					var rowNew=$("<tr><td></td><td></td><td></td><td></td></tr>")
+					rowNew.children().eq(0).text(value['tentaikhoan']);
+					rowNew.children().eq(1).text(value['matkhau']);
+					rowNew.children().eq(2).text(value['chucvu']);
+					rowNew.children().eq(3).html("<a href='DeleteTaiKhoan?taikhoan2='"+value['tentaikhoan']+"'><span class='glyphicon glyphicon-remove'></span></a>")
+					rowNew.appendTo(table1);
+				});
+			}			
+		});
+	}
+</script> -->
+	
+	 <script>
         $(document).ready(function(){
         	<%
     			if(request.getAttribute("ketqua")=="thanhcong"||request.getAttribute("ketqua2")=="thanhcong")
@@ -42,7 +62,7 @@
     				alert("Không tìm thấy!!!");
     		<%	}%>
 		});
-	</script>
+	</script> 
 	<div class="container">
     <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
     <tr>
@@ -62,7 +82,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="table-responsive">
-          <table class="table" id="table">
+         
           <h3 align="center"><strong>Quản lí người dùng</strong></h3> <br>
           
           <form action="SearchTaiKhoan">
@@ -70,7 +90,8 @@
             <input class="form-control" name="noidungtimkiem" id="noidungtimkiem" type="text" placeholder="Từ khóa" value="">           
             <button class="btn btn-default" type="submit" >Tìm kiếm</button>
           </div>
-         </form>   
+         </form>          
+         <table class="table" id="dstaikhoantable">
           <br>
           <tr><th>STT</th><th>Tên Tài Khoản</th><th>Mật khẩu</th><th>Phân quyền</th><th>Hủy bỏ</th></tr>
           	<%
@@ -92,6 +113,8 @@
 				<td><%=tk.getMatKhau() %></td>
 				<td><%=tk.getChucVu() %></td>
 				<td><a href="<%=xoaURL%>"><span class="glyphicon glyphicon-remove"></span></a></td>
+				<!-- lấy cái value nó nhét vô
+-->
 			</tr>
 			<%
 			 	}

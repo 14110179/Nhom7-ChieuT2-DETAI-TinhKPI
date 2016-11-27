@@ -133,7 +133,7 @@ public class TieuChiMethod {
 		{									
 			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/csdlwebkpi","root","Preciouspro1");
 			stm=con.createStatement();		
-			String s="INSERT INTO tieuchi VALUES(?,?,?,?,?,?,?,?)";
+			String s="INSERT INTO tieuchi VALUES(?,?,?,?,?)";
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(s);
 			int x=DemMaTC(manhomtc)+1;
 			String matc=manhomtc+"-"+x;
@@ -146,10 +146,7 @@ public class TieuChiMethod {
 			pst.setString(2, tentieuchi);
 			pst.setString(3, manhomtc);	
 			pst.setString(4, mabieumau);
-			pst.setInt(5, 0);
-			pst.setInt(6, 0);
-			pst.setInt(7, 0);
-			pst.setInt(8, 0);
+			pst.setInt(5, 10);
 			return pst.executeUpdate()>0;
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -170,6 +167,53 @@ public class TieuChiMethod {
 			
 		return false;
 	}
+	public ArrayList<DSTieuChi> getAllTieuChi2(String manhomtc,String mabieumau,String nguoithuchien)
+	{
+		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
+		ArrayList<DSTieuChi> dstc=new ArrayList<DSTieuChi>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {			
+			e.printStackTrace();
+		}
+		Connection con=null;
+		Statement stm=null;
+		ResultSet rs;	
+		try
+		{
+			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
+			stm=con.createStatement();
+			rs=stm.executeQuery("select tieuchi.matieuchi,tieuchi.tentieuchi,tieuchi.manhomtc,tieuchi.mabieumau,tieuchi.diemtoida from thuchienbieumau , tieuchi where thuchienbieumau.matieuchi=tieuchi.matieuchi and thuchienbieumau.nguoithuchien='"+nguoithuchien+"' and thuchienbieumau.mabieumau='"+mabieumau+"' and thuchienbieumau.manhomtieuchi='"+manhomtc+"'");
+			
+		while(rs.next())
+		{
+			String matc=rs.getString("matieuchi");
+			String noidung=rs.getString("tentieuchi");
+			String manhomtieuchi=rs.getString("manhomtc");
+			String mabm=rs.getString("mabieumau");
+			int diemtoida=rs.getInt("diemtoida");
+			DSTieuChi item=new DSTieuChi(matc,noidung,manhomtieuchi,mabm,String.valueOf(diemtoida));						
+			dstc.add(item);
+		}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}	
+		finally
+		{
+			
+				try {
+					con.close();
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+		}
+		return dstc;
+	}
 	public ArrayList<DSTieuChi> getAllTieuChi(String manhomtc)
 	{
 		ChuoiKetNoiMYSQL s=new ChuoiKetNoiMYSQL();
@@ -186,7 +230,7 @@ public class TieuChiMethod {
 		{
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("select matieuchi,tentieuchi,manhomtc,mabieumau from tieuchi where manhomtc='"+manhomtc+"'");
+			rs=stm.executeQuery("select matieuchi,tentieuchi,manhomtc,mabieumau,diemtoida from tieuchi where manhomtc='"+manhomtc+"'");
 			
 		while(rs.next())
 		{
@@ -194,7 +238,8 @@ public class TieuChiMethod {
 			String noidung=rs.getString("tentieuchi");
 			String manhomtieuchi=rs.getString("manhomtc");
 			String mabieumau=rs.getString("mabieumau");
-			DSTieuChi item=new DSTieuChi(matc,noidung,manhomtieuchi,mabieumau);						
+			int diemtoida=rs.getInt("diemtoida");
+			DSTieuChi item=new DSTieuChi(matc,noidung,manhomtieuchi,mabieumau,String.valueOf(diemtoida));						
 			dstc.add(item);
 		}
 
