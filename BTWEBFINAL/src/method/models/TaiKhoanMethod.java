@@ -124,7 +124,7 @@ public class TaiKhoanMethod {
 			rs=stm.executeQuery("SELECT roleid FROM role WHERE rolename='"+t.getChucvu()+"'");
 			if(rs.next())
 				x=rs.getInt("roleid");
-			String s="UPDATE users SET pass=?,hoten=?,ngaysinh=?,gioitinh=?,noisinh=?,dantoc=?,socmnd=?,tongiao=?,diachi=?,sdt=?,email=?,ghichu=?,roleid=? WHERE username=?";
+			String s="UPDATE users SET pass=?,hoten=?,ngaysinh=?,gioitinh=?,noisinh=?,dantoc=?,socmnd=?,tongiao=?,diachi=?,sdt=?,email=?,ghichu=?,roleid=?,khoa=? WHERE username=?";
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(s);									
 			pst.setString(1,t.getPass());
 			pst.setString(2,t.getHoten());
@@ -138,7 +138,8 @@ public class TaiKhoanMethod {
 			pst.setString(11,t.getEmail());
 			pst.setString(12,t.getGhichu());
 			pst.setInt(13, x);
-			pst.setString(14, t.getUsername());
+			pst.setString(15, t.getUsername());
+			pst.setString(14, t.getKhoa());
 			int i=0;
 			if(t.getGioitinh().equals("Nam"))
 				i=1;
@@ -263,31 +264,32 @@ public class TaiKhoanMethod {
 			rs=stm.executeQuery("SELECT roleid FROM role WHERE rolename='"+t.getChucvu()+"'");
 			if(rs.next())
 				x=rs.getInt("roleid");
-			String s="INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String s="INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(s);	
 			if(t.getPass()==null||t.getPass()=="")
 				pst.setString(2,"123456");
 			else
 				pst.setString(2,t.getPass());
-			pst.setString(3,t.getHoten());			
+			pst.setString(4,t.getHoten());			
 			if(t.getNgaysinh()==null||t.getNgaysinh()=="")
-				pst.setString(4,"1990-01-01");
+				pst.setString(5,"1990-01-01");
 			else
-				pst.setString(4,t.getNgaysinh());		
-			pst.setString(6,t.getNoisinh());
-			pst.setString(7,t.getDantoc());
-			pst.setString(8,t.getSocmnd());
-			pst.setString(9,t.getTongiao());
-			pst.setString(10,t.getDiachi());
-			pst.setString(11,t.getSdt());
-			pst.setString(12,t.getEmail());
-			pst.setString(13,t.getGhichu());
-			pst.setInt(14, x);
+				pst.setString(5,t.getNgaysinh());
+			pst.setString(3,t.getKhoa());
+			pst.setString(7,t.getNoisinh());
+			pst.setString(8,t.getDantoc());
+			pst.setString(9,t.getSocmnd());
+			pst.setString(10,t.getTongiao());
+			pst.setString(11,t.getDiachi());
+			pst.setString(12,t.getSdt());
+			pst.setString(13,t.getEmail());
+			pst.setString(14,t.getGhichu());
+			pst.setInt(15, x);
 			pst.setString(1, t.getUsername());
 			int i=0;
 			if(t.getGioitinh().equals("Nam"))
 				i=1;
-			pst.setInt(5, i);
+			pst.setInt(6, i);
 			
 			return pst.executeUpdate()>0;
 		}catch(SQLException e){

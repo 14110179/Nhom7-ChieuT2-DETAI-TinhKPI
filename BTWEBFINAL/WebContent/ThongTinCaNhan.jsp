@@ -149,10 +149,10 @@
            </tr>
            <tr>
              <td style="width: 30%; height: auto;">
-               <span>Tỉnh/Thành phố</span><br>       
+               <span>Khoa</span><br>       
              </td>
              <td style="width: 70%; height: auto;">
-               <span>:  <%=request.getAttribute("thanhpho")%></span><br>        
+               <span>:  <%= tt.getKhoa().toString() %></span><br>        
              </td>
            </tr>
            <tr>
@@ -160,7 +160,7 @@
                <span>Quận/Huyện</span><br>       
              </td>
              <td style="width: 70%; height: auto;">
-               <span>:  <%=request.getAttribute("quanhuyen")%></span><br>        
+               <span>:  Chưa có thông tin</span><br>        
              </td>
            </tr>
            <tr>
@@ -168,7 +168,7 @@
                <span>Quốc gia</span><br>       
              </td>
              <td style="width: 70%; height: auto;">
-               <span>:  <%=request.getAttribute("quocgia")%></span><br>        
+               <span>:  Việt Nam</span><br>        
              </td>
            </tr>
            <tr>

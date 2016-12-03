@@ -61,8 +61,7 @@ public class BieuMauMethod {
 		Statement stm=null;
 		
 		try
-		{
-					
+		{					
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
 			String sql="INSERT INTO bieumau VALUE(?,?,?,?)";
@@ -71,8 +70,7 @@ public class BieuMauMethod {
 			pst.setString(2,tenbieumau);
 			pst.setString(3,namhoc);
 			pst.setString(4,nguoitao);
-			return pst.executeUpdate()>0;						
-					
+			return pst.executeUpdate()>0;											
 		}catch(SQLException e){
 			e.printStackTrace();
 		}	

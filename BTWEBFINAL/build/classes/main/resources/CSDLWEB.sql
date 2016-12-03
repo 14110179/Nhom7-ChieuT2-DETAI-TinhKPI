@@ -58,10 +58,7 @@ create table tieuchi
     tentieuchi nvarchar(5000),
     manhomtc char(100),
     mabieumau char(100),
-    diemtudanhgia int,
-    diemtruongbomon int,
-    diemtruongkhoa int,
-    diembgh int,
+    diemtoida int,
     foreign key (mabieumau) references bieumau(mabieumau),
     foreign key (manhomtc) references nhomtieuchi(manhomtc)
 );
@@ -99,11 +96,13 @@ create table thuchienbieumau
     nguoithuchien char(20),
     trangthai nvarchar(500),
     matieuchi char(100),
+    manhomtieuchi char(100),
     diemtudanhgia int,
     diemtruongbomon int,
     diemtruongkhoa int,
     diembangiamhieu int,
     foreign key (mabieumau) references bieumau(mabieumau),
+	foreign key (manhomtieuchi) references nhomtieuchi(manhomtc),
     foreign key (matieuchi) references tieuchi(matieuchi),
     foreign key (nguoithuchien) references users(username)
 );

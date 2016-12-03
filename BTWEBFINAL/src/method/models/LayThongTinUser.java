@@ -43,6 +43,8 @@ public class LayThongTinUser {
 				String socmndgv="";
 				String tongiaogv="";
 				String ghichugv="";
+				String khoagv="";
+				
 				while(rs.next())		
 				{								
 					if(rs.getDate("ngaysinh")==null)
@@ -64,6 +66,7 @@ public class LayThongTinUser {
 
 						
 					}
+					khoagv=rs.getString("khoa");
 					
 					usernamegv=(rs.getString("username"));
 					
@@ -93,7 +96,7 @@ public class LayThongTinUser {
 					gt="Nam";
 				else
 					gt="Nữ";
-				tt=new ThongTinUser(usernamegv,"","",hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);											
+				tt=new ThongTinUser(usernamegv,"",khoagv,"",hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);											
 		}catch(SQLException e){
 			e.printStackTrace();
 		}	
@@ -149,6 +152,7 @@ public class LayThongTinUser {
 				String ghichugv="";
 				String chucvu="";
 				String pass="";
+				String khoagv="";
 				while(rs.next())		
 				{								
 					if(rs.getDate("ngaysinh")==null)
@@ -173,7 +177,7 @@ public class LayThongTinUser {
 					chucvu=rs.getString("rolename");
 					pass=rs.getString("pass");
 					usernamegv=(rs.getString("username"));
-					
+					khoagv=rs.getString("khoa");
 					hotengv=(rs.getString("hoten"));
 					
 					dantocgv=(rs.getString("dantoc"));
@@ -200,7 +204,7 @@ public class LayThongTinUser {
 					gt="Nam";
 				else
 					gt="Nữ";
-				tt=new ThongTinUser(usernamegv,pass,chucvu,hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);																							
+				tt=new ThongTinUser(usernamegv,pass,khoagv,chucvu,hotengv,formatter.format(ngaysinhgv),gt,noisinhgv,dantocgv,socmndgv,tongiaogv,diachigv,sdtgv,emailgv,ghichugv);																							
 		}catch(SQLException e){
 			e.printStackTrace();
 		}	

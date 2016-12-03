@@ -47,6 +47,27 @@
               				<td><label for="password">Mật khẩu</label></td>
               				<td><input  type="text" id="matkhau" name="matkhau" class="form" value="<%= x.getPass()%>"></td>
            				</tr>
+           				<tr>
+              				<td><label for="khoa">Khoa</label></td>
+              				<td>
+              				<select id="khoa" name="khoa">
+                  			<option selected="selected" value="<%= x.getKhoa()%>"><%= x.getKhoa()%></option>               					
+              				<%
+                  						String[] arr1=new String[1];
+              							if(x.getKhoa().equals("Công Nghệ Thông Tin"))
+              							{
+              								arr1[0]="Cơ Khí Chế Tạo Máy";
+              								
+              							}
+              							else
+              							{
+              								arr1[0]="Công Nghệ Thông Tin";
+              							}
+              				%>
+              				<option value="<%=arr1[0]%>"><%=arr1[0]%></option>
+              			</select>
+              				</td>
+           				</tr>
             			<tr>
               				<td><label for="chon">Phân quyền</label></td>
               				<td>

@@ -45,7 +45,8 @@ public class InsertTaiKhoan extends HttpServlet {
 		String email=request.getParameter("email");
 		String chucvu=request.getParameter("chon");
 		String ghichu=request.getParameter("ghichu");
-		ThongTinUser t=new ThongTinUser(tentaikhoan,matkhau,chucvu,hoten,ngaysinh,gioitinh,noisinh
+		String khoa=request.getParameter("khoa");
+		ThongTinUser t=new ThongTinUser(tentaikhoan,matkhau,khoa,chucvu,hoten,ngaysinh,gioitinh,noisinh
 				,dantoc,socmnd,tongiao,diachi,sdt,email,ghichu);
 		TaiKhoanMethod ttk=new TaiKhoanMethod();
 		boolean check=ttk.InsertTK(t);

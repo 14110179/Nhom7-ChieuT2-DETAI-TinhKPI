@@ -6,6 +6,10 @@ public class DSTieuChi {
 	String manhomtc;
 	String mabieumau;
 	String diemtoida;
+	String diemtudanhgia;
+	String diemtruongbomon;
+	String diemhieutruong;
+	String diemtruongkhoa;
 	public DSTieuChi(String matieuchi,String noidung,String manhomtc,String mabieumau,String diemtoida)
 	{
 		this.matieuchi=matieuchi;
@@ -13,6 +17,38 @@ public class DSTieuChi {
 		this.manhomtc=manhomtc;
 		this.mabieumau=mabieumau;
 		this.diemtoida=diemtoida;
+	}
+	public void setDiemTruongBoMon(String diemtruongbomon)
+	{
+		this.diemtruongbomon=diemtruongbomon;
+	}
+	public String getDiemTruongBoMon()
+	{
+		return this.diemtruongbomon;
+	}
+	public void setDiemTruongKhoa(String diemtruongkhoa)
+	{
+		this.diemtruongkhoa=diemtruongkhoa;
+	}
+	public String getDiemTruongKhoa()
+	{
+		return this.diemtruongkhoa;
+	}
+	public void setDiemHieuTruong(String diemhieutruong)
+	{
+		this.diemhieutruong=diemhieutruong;
+	}
+	public String getDiemHieuTruong()
+	{
+		return this.diemhieutruong;
+	}
+	public void setDiemTuDanhGia(String diemtudanhgia)
+	{
+		this.diemtudanhgia=diemtudanhgia;
+	}
+	public String getDiemTuDanhGia()
+	{
+		return this.diemtudanhgia;
 	}
 	public void setMaTieuChi(String matieuchi)
 	{

@@ -33,6 +33,7 @@ public class DangKyBieuMau extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");	
 		HttpSession session =request.getSession();
+		String load=session.getAttribute("trangload").toString();
 		String []dsdangky=request.getParameterValues("checkbox[]");
 		String nguoithuchien=session.getAttribute("taikhoan").toString();
 		if(dsdangky==null)
@@ -48,7 +49,7 @@ public class DangKyBieuMau extends HttpServlet {
 				mt.DangKy(nguoithuchien, item);
 			}
 		request.setAttribute("message", "ThanhCong");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/DangKyMucTieuCaNhan_GiangVien.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/"+load);
 		dispatcher.forward(request, response);
 		//response.sendRedirect("DangKyMucTieuCaNhan_GiangVien.jsp");
 	}

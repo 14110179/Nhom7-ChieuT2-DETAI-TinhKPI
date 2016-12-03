@@ -48,6 +48,15 @@
               				<td><label for="password">Mật khẩu</label></td>
               				<td><input type="text" id="matkhau" name="matkhau" class="form" value=""></td>
            				</tr>
+           				<tr>
+              				<td><label for="hoten">Khoa</label></td>
+              				<td>
+              				<select id="khoa" name="khoa">
+                  					<option selected="true" value="Công Nghệ Thông Tin">Công Nghệ Thông Tin</option>                 					        					                 					
+                  					<option value="Cơ Khí Chế Tạo Máy">Cơ Khí Chế Tạo Máy</option>                 					
+                				</select>
+              				</td>
+            			</tr>
             			<tr>
               				<td><label for="chon">Phân quyền</label></td>
               				<td>

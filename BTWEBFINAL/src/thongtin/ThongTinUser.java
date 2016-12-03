@@ -4,6 +4,7 @@ package thongtin;
 public class ThongTinUser {
 	String username;
 	String pass;
+	String khoa;
 	String chucvu;
 	String hoten;
 	String ngaysinh;
@@ -16,10 +17,11 @@ public class ThongTinUser {
 	String sdt;
 	String email;
 	String ghichu;
-	public ThongTinUser(String username,String pass,String chucvu,String hoten,String ngaysinh,String gioitinh,String noisinh,String dantoc,String socmnd,String tongiao,String diachi,String sdt,String email,String ghichu)
+	public ThongTinUser(String username,String pass,String khoa,String chucvu,String hoten,String ngaysinh,String gioitinh,String noisinh,String dantoc,String socmnd,String tongiao,String diachi,String sdt,String email,String ghichu)
 	{
 		this.username=username;
 		this.pass=pass;
+		this.khoa=khoa;
 		this.chucvu=chucvu;
 		this.hoten=hoten;
 		this.ngaysinh=ngaysinh;
@@ -40,6 +42,14 @@ public class ThongTinUser {
 	public void setUsername(String username)
 	{
 		this.username=username;
+	}
+	public String getKhoa()
+	{
+		return this.khoa;
+	}
+	public void setKhoa(String khoa)
+	{
+		this.khoa=khoa;
 	}
 	public String getChucvu()
 	{

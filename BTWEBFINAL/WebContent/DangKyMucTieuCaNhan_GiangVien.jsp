@@ -48,6 +48,7 @@
         
 </head>
 <body>
+<%	session.setAttribute("trangload","DangKyMucTieuCaNhan_GiangVien.jsp"); %>
 	<div class="container">
 		<table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
       	<tr>
@@ -162,6 +163,7 @@
     </div>
     <!--  -->
     <div class="tab-pane" id="ChamDiem" > 
+    <form action="ChamDiemBieuMau" method="post">
     	<table id="#" cellspacing="0" cellpadding="4" border="3"  class="table table-responsive"  style=" width:900px;word-wrap: break-word;  no-repeat; color:#333333; text-align: justify;" align="center">  		
    		   	<thead>
    		   	<tr align="center" style=" color:White;background-color:#507CD1;font-size:10pt;font-weight:bold;">
@@ -189,7 +191,7 @@
       			NhomTieuChiMethod mt1=new NhomTieuChiMethod();
       			ArrayList<DSNhomTC> dsntc1=new ArrayList<DSNhomTC>();
       			dsntc1=mt.getAllNhomTieuChi("BM2016-2017");
-       			if(dsntc!=null)
+       			if(dsntc1!=null)
     			for(DSNhomTC item : dsntc1)
     			{  		
     				i1++;
@@ -211,9 +213,10 @@
        					<tr>
        						<td><div style="word-wrap: break-word;text-align: justify; width:655px;"><%=i1%>.<%=j1%><br><%=tc.getNoiDung()%><br></div></td>       				      						
        						<td>
-       							<select>
-        							<option selected="selected" value="0" >0</option>
-        							<option  value="1">1</option>
+       							<select name="<%=tc.getMaTieuChi()%>">
+       							<option selected="selected" value="<%=tc.getDiemTuDanhGia()%>" ><%=tc.getDiemTuDanhGia()%></option>
+        							<option value="0" >0</option>
+        							<option value="1">1</option>
         							<option value="2">2</option>
         							<option value="3">3</option>
         							<option value="4">4</option>
@@ -271,6 +274,7 @@
       		</tr>
     	</tfoot>
     </table>
+    </form>
     </div>
     </div>  
     </div>
