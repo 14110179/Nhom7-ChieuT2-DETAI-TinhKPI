@@ -1,8 +1,8 @@
 package btwebfinal.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,26 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.util.ArrayList;
-
 import method.models.NhomTieuChiMethod;
 import method.models.TieuChiMethod;
 import thongtin.DSNhomTC;
 import thongtin.DSTieuChi;
 
-/**
- * Servlet implementation class LoadBieuMauGV
- */
-@WebServlet("/LoadBieuMauGV")
-public class LoadBieuMauGV extends HttpServlet {
+
+@WebServlet("/TruongKhoaXemBieuMau")
+public class TruongKhoaXemBieuMau extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public LoadBieuMauGV() {
+    public TruongKhoaXemBieuMau() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,8 +62,9 @@ public class LoadBieuMauGV extends HttpServlet {
 				
 					j++;
 					html+="<tr><td><div style='word-wrap: break-word;text-align: justify; width:655px;'>"+i+"."+j+"<br>"+tc.getNoiDung()+"<br></div></td><td><select disabled='disabled'><option selected= value='"+tc.getDiemTuDanhGia()+"' >"+tc.getDiemTuDanhGia()+"</option></select></td>"
-							+ "<td><select name='"+tc.getMaTieuChi()+"'>"
-									+ "<option selected value='"+tc.getDiemTruongBoMon()+"' >"+tc.getDiemTruongBoMon()+"</option>"
+							+ "<td><select disabled='disabled'>"+"<option selected value='"+tc.getDiemTruongBoMon()+"'>"+tc.getDiemTruongBoMon()+"</option></select></td>"
+							+"<td><select name='"+tc.getMaTieuChi()+"'>"
+									+ "<option selected value='"+tc.getDiemTruongKhoa()+"' >"+tc.getDiemTruongKhoa()+"</option>"
 											+ "<option value='0' >0</option>"
 											+ "<option value='1' >1</option>"
 											+ "<option value='2' >2</option>"
@@ -81,15 +76,18 @@ public class LoadBieuMauGV extends HttpServlet {
 											+ "<option value='8' >8</option>"
 											+ "<option value='9' >9</option>"
 											+ "<option value='10' >10</option></select></td>"
-											+ "<td><select disabled='disabled'>"
-											+ "<option selected value='"+tc.getDiemTruongKhoa()+"'>"+tc.getDiemTruongKhoa()+"</option></select></td></tr>";
+											+ "</tr>";
 				}
 		}
 			
 		request.setAttribute("html", html);	
 		response.setContentType("text/plain");
 		response.getWriter().write(html);
-			
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 	}
 
 }

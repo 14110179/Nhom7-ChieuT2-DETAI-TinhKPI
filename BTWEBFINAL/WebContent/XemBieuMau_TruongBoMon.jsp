@@ -32,19 +32,27 @@
 
           }
         </style>
-        <c:import url="/LoadBieuMauGV"></c:import>
-        <script>
+        <!-- <c:import url="/LoadBieuMauGV"></c:import> -->
+          <script>
         $(document).ready(function(){
+        	$.get('LoadBieuMauGV',{MAGV : $(this).find(":selected").val()},function(responseText){
+    			
+    			$('#Comf').text("");
+    			$('#Comf').prepend(responseText);
+    		})
         	$('#danhsachgv').change(function(){
-        		$.get('LoadBieuMauGV',{magv : $(this).val()},
-        				function(responseText){
+        		
+        		$.get('LoadBieuMauGV',{MAGV : $(this).find(":selected").val()},function(responseText){
         			
+        			$('#Comf').text("");
+        			$('#Comf').prepend(responseText);
         		})
         	})
         })
         </script>
 </head>
 <body>
+<%	session.setAttribute("trangload","XemBieuMau_TruongBoMon.jsp"); %>
 <div class="container" style="background-repeat: no-repeat;">
 <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
       <tr>
@@ -85,12 +93,13 @@
      	LoadDSGiangVien mt=new LoadDSGiangVien();
      	dsgv=mt.getAllGiangVien();
      %>
-     <select id="danhsachgv">
+     <form action="TruongBoMonChamDiem" method="post">
+     <select id="danhsachgv" name="danhsachgv">
      	<%
      		for(DanhSachGiangVien item : dsgv)
      		{
      	%>
-     		<option value="<%= item.getMaGV()%>"><%= item.getTenGV()%> - <%= item.getMaGV()%></option>
+     		<option value="<%=item.getMaGV()%>"><%= item.getTenGV()%> - <%= item.getMaGV()%></option>
      	<%} %>
      </select>
 
@@ -105,28 +114,13 @@
        			<th colspan="3" scope="col"><p align="center">Bảng Điểm</p></th>  		 			     			
        		</tr> 
        	</thead>     	
-       	<tbody>	
-       		<tr style="height: auto;" colspan="4">     	
-       			<td  height="10px">	
-       			 	<table cellspacing="0" cellpadding="4" border="0"  class="table">
-       			 		<tr align="center" style="height:auto;">
-       			 			<td> A : Giảng Viên</td>
-       			 			<td> B : Trưởng bộ môn</td>  
-       			 			<td> C : Trưởng khoa</td>        			 			
-       			 		</tr>
-       			 	</table>     
-       			 </td>
-       			 <td>A</td>
-       			 <td>B</td>  
-       			 <td>C</td>     			   			 	
-      		</tr>  
-      		<% out.print(request.getAttribute("html")); %>   		     		
+       	<tbody id = "Comf">	    		
     	</tbody>
     	<tfoot>
       		<tr align="center">
       			<td colspan="4">
-      				<button type="submit" id="taontc" class="btn btn-primary" >Xác Nhận</button>
-      			</td>
+      				<button type="submit" name="btn" value="truongbomon" id="taontc" class="btn btn-primary" >Xác Nhận</button>
+      			</td> 
       		</tr>
     	</tfoot>
     </table>
@@ -136,9 +130,11 @@
         <td height="50"></td>
       </tr>
      </table>
+     </form>
      </div>
      </div>
      <div class="col-lg-2"></div>
   </div>
+
 </body>
 </html>

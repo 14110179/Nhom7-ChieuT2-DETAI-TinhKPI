@@ -183,26 +183,19 @@ public class TieuChiMethod {
 		{
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("select thuchienbieumau.diembangiamhieu, thuchienbieumau.diemtruongkhoa, thuchienbieumau.diemtruongbomon, thuchienbieumau.diemtudanhgia, tieuchi.matieuchi,tieuchi.tentieuchi,tieuchi.manhomtc,"
+			rs=stm.executeQuery("select tieuchi.matieuchi,tieuchi.tentieuchi,tieuchi.manhomtc,"
 					+ "tieuchi.mabieumau,tieuchi.diemtoida from thuchienbieumau , "
 					+ "tieuchi where thuchienbieumau.matieuchi=tieuchi.matieuchi and thuchienbieumau.nguoithuchien='"+nguoithuchien+"' and thuchienbieumau.mabieumau='"+mabieumau+"'");
 			
 		while(rs.next())
 		{
-			String diemtudanhgia=rs.getString("diemtudanhgia");
-			String diemtruongbomon=rs.getString("diemtruongbomon");
-			String diemtruongkhoa=rs.getString("diemtruongkhoa");
-			String diemhieutruong=rs.getString("diembangiamhieu");
+		
 			String matc=rs.getString("matieuchi");
 			String noidung=rs.getString("tentieuchi");
 			String manhomtieuchi=rs.getString("manhomtc");
 			String mabm=rs.getString("mabieumau");
 			int diemtoida=rs.getInt("diemtoida");
-			DSTieuChi item=new DSTieuChi(matc,noidung,manhomtieuchi,mabm,String.valueOf(diemtoida));	
-			item.setDiemTuDanhGia(diemtudanhgia);
-			item.setDiemHieuTruong(diemhieutruong);
-			item.setDiemTruongBoMon(diemtruongbomon);
-			item.setDiemTruongKhoa(diemtruongkhoa);
+			DSTieuChi item=new DSTieuChi(matc,noidung,manhomtieuchi,mabm,String.valueOf(diemtoida));				
 			dstc.add(item);
 		}
 

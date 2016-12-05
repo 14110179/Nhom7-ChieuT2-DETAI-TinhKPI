@@ -1,9 +1,12 @@
 eclipse.preferences.version=1
 encoding//WebContent/XemBieuMau_PTCCB.jsp=UTF-8
 encoding//src/btwebfinal/servlets/DoiMK.java=UTF-8
+encoding//src/btwebfinal/servlets/HieuTruongXemBieuMau.java=UTF-8
+encoding//src/btwebfinal/servlets/LoadBieuMauGV.java=UTF-8
 encoding//src/btwebfinal/servlets/LoadDSTaiKhoan.java=UTF-8
 encoding//src/btwebfinal/servlets/Login.java=UTF-8
 encoding//src/btwebfinal/servlets/TaoBieuMau.java=UTF-8
+encoding//src/btwebfinal/servlets/TruongKhoaXemBieuMau.java=UTF-8
 encoding//src/btwebfinal/servlets/UpdateThongTinTaiKhoan.java=UTF-8
 encoding//src/method/models/DangKyBieuMauMethod.java=UTF-8
 encoding//src/method/models/LayThongTinUser.java=UTF-8
