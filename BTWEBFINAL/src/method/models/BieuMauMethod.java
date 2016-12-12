@@ -26,7 +26,7 @@ public class BieuMauMethod {
 		{						
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("SELECT * FROM bieumau WHERE username='"+mabieumau+"'");
+			rs=stm.executeQuery("select * from bieumau where username='"+mabieumau+"'");
 			if(rs.next())
 				return true;
 		}catch(SQLException e){

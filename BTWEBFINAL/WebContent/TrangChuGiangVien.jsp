@@ -46,7 +46,7 @@
       </script>
 </head>
 <body>
-	 
+	 <% session.setAttribute("trangload","TrangChuGiangVien.jsp") ;%>
 
     <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
     <tr>
@@ -98,7 +98,7 @@
                             <a href="ThongTinCaNhan.jsp" class="list-group-item"><img border="0" src="Image/user.png" width="24" height="24"> Thông tin cá nhân</a>
                            
                             <a href="DangKyMucTieuCaNhan_GiangVien.jsp" class="list-group-item"><img border="0" src="Image/muctieu.png" width="24" height="24"> Đăng ký mục tiêu cả nhân</a>     
-                                                        
+                             <a href="XemTinNhan.jsp" class="list-group-item"><img border="0" src="Image/tinnhan.png" width="24" height="24"> Tin Nhắn</a>                                 
                             <a href="TrangDangNhap.jsp" class="list-group-item"><img border="0" src="Image/thoat.png" width="24" height="24"> Thoát</a>      
                           </div>
                 </div>

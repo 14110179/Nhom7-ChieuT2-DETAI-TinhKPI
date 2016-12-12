@@ -112,9 +112,13 @@
 				<td><a href="<%=modalURL%>" ><%=tk.getTenTaiKhoan() %></a></td>
 				<td><%=tk.getMatKhau() %></td>
 				<td><%=tk.getChucVu() %></td>
-				<td><a href="<%=xoaURL%>"><span class="glyphicon glyphicon-remove"></span></a></td>
-				<!-- lấy cái value nó nhét vô
--->
+				<%if(tk.getChucVu().equals("Admin")) {%>
+					<td><a href="#"><span class="glyphicon glyphicon-user"></span></a></td>
+					
+				<%}else {%>
+					<td><a href="<%=xoaURL%>"><span class="glyphicon glyphicon-remove"></span></a></td>
+					<%} %>
+				<!-- lấy cái value nó nhét vô-->
 			</tr>
 			<%
 			 	}

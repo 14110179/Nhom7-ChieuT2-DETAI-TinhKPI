@@ -13,11 +13,7 @@
         <script src="js/html5shiv.min.js"></script>
         <script src="js/respond.min.js"></script>
         <script src="js/jquery1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-   
-     
-        
-        
+        <script src="js/bootstrap.min.js"></script>                        
 </head>
 <body>		
 <%

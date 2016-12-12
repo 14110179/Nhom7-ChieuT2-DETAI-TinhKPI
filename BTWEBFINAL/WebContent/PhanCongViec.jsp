@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,12 +11,29 @@
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="Style.css">
       
-        <script src="html5shiv.min.js"></script>
-        <script src="respond.min.js"></script>
-        <script src="jquery1.min.js"></script>
+       <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <script src="js/jquery1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        
-
+        <script>
+        $(document).ready(function(){
+        	<%
+    			if(request.getAttribute("message")=="true")
+    			{
+    		%>
+    				alert("Thành công");
+    				<%	request.setAttribute("message","a");%>
+    		<%
+    			}       		
+    			if(request.getAttribute("message")=="false")
+    			{
+    		%>
+    				alert("Thất bại");
+    				<%	request.setAttribute("message","a");%>
+    		<%}%>
+		});
+        </script>
+		
         <style type="text/css">
           #TrangChu {
             display:  block;
@@ -24,6 +42,26 @@
         </style>
 </head>
 <body>
+		<script>
+        $(document).ready(function(){
+        	
+        	$.post('LoadDSGiangVienKhoa',{KHOA : $(this).find(":selected").val()},function(responseText){
+    			
+    			$('#Comf').text("");
+    			$('#Comf').prepend(responseText);
+    			
+    		})
+        	$('#DANHSACHGIANGVIEN').change(function(){
+        		
+        		$.post('LoadDSGiangVienKhoa',{KHOA : $(this).find(":selected").val()},function(responseText){
+        			
+        			$('#Comf').text("");
+        			$('#Comf').prepend(responseText);
+        		})
+        	})
+        	
+        })
+        </script>
 	<div class="container">
     <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
       <tr>
@@ -35,7 +73,7 @@
             <img border="0" src="Image/spkt.jpg" height="143" style="width: 1002px">
           </div>
           <div align="right">
-            <a href="#"><button class="btn btn-default" >Thoát</button></a>
+            <a href="<%= session.getAttribute("trangload")%>"><button class="btn btn-default" >Thoát</button></a>
           </div>
         </td>
       </tr>
@@ -46,7 +84,7 @@
       
       <!-- hình trên -->
     
-     
+     <form action="GuiThongBao" method="post">
      <table  style="position: relative; left: 200px;">
        <tbody>
          <tr>        
@@ -66,10 +104,10 @@
 
        <td  style="position: relative;left: 1%; height: 25px; width: 80px" >Chọn khoa</td>
        <td style="position: relative;left: 1%; height: 25px; width: 115px;">
-         <select>
-           <option selected="selected" value="Công nghệ Thông tin">Công nghệ Thông tin</option>
-           <option value="Cơ khí Chế tạo máy">Cơ khí Chế tạo máy</option>
-           <option value="Cơ khí Động lực">Cơ khí Động lực</option>
+         <select id="DANHSACHGIANGVIEN" class="DANHSACHGIANGVIEN">
+           <option selected="selected" value="Công Nghệ Thông Tin">Công Nghệ Thông Tin</option>
+           <option value="Cơ Khí Chế Tạo Máy">Cơ Khí Chế Tạo Máy</option>
+           <option value="Cơ Khí Động Lực">Cơ Khí Động Lực</option>
            <option value="Đào tạo chất lượng cao">Đào tạo chất lượng cao</option>
            <option value="Điện - Điện tử">Điện - Điện tử</option>
            <option value="In - Truyền thông">In - Truyền thông</option>
@@ -84,11 +122,8 @@
         </td>
         <td style="position: relative;left: 10%; height: 25px; width: 110px " >Chọn giảng viên</td>
         <td style="position: relative;left: 10%;">
-          <select>
-           <option selected="selected" value="Nguyễn Văn A">Nguyễn Văn A</option>
-           <option value="Nguyễn Văn B">Nguyễn Văn B</option>
-           <option value="Nguyễn Văn C">Nguyễn Văn C</option>
-           <option value="Nguyễn Văn D">Nguyễn Văn D</option>
+          <select id="Comf" class="Comf" name="Comf">
+          
            
          </select>
         </td>
@@ -98,35 +133,36 @@
      
      <br>
      <br>
-     <span style="position: relative; left: 250px;"> Nội dung</span>
-
+    
+	
      <table cellspacing="0" cellpadding="4" border="0"  style="color:#333333;width:55%;height: 200px; border-collapse:collapse; text-align: justify;" align="center">
      <tbody>
-       <tr>
+     <tr><td> <span > Tiêu đề</span></td></tr>
+     <tr>
+     
+       
         <td>
          
-            <textarea style="height: 150px; width: 500px; resize: none;" cols="50"></textarea>
+            <textarea style="height: 30px; width: 600px; resize: none;" cols="50" name="tieude"></textarea>
+       
+        </td>
+       </tr>
+       <tr><td> <span > Nội dung</span></td></tr>
+       <tr>
+         
+        <td>
+         
+            <textarea style="height: 150px; width: 600px; resize: none;" cols="50" name="noidung"></textarea>
        
         </td>
        </tr>
        <tr>
          <td height="50">   
-          <a href="#gui"><input class="btn btn-primary" style="width: 100px; height:35px; position: relative; left: 30%;" data-toggle="modal" data-target="#gui" value="Gửi"/></a>
-          <div class="modal fade" id="gui" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div align="center" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Đóng</span></button>
-                <h4 class="modal-title">Bạn có muốn gửi không?</h4>
-              </div> <br>
-
-                <button type="button" class="btn btn-primary" style="position: relative; left: 25%;">Xác nhận</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="position: relative; left: 45%;">Hủy bỏ</button>
-              
-              </div>  
-            </div>
-          </div>
-          <a href="#"><input class="btn btn-primary" type="button" style="position: relative; left: 60%;" value="Hủy bỏ"/></a>
+          	<input class="btn btn-primary" style="width: 100px; height:35px;"type="submit"  value="Gửi"/>
+          
+          
+        
+        	<a href="#"><input class="btn btn-primary" style="width: 100px; height:35px;" type="button"  value="Hủy bỏ"/></a>
         </td>
        </tr>
      </tbody>
@@ -138,9 +174,10 @@
         <td height="50"></td>
       </tr>
      </table>
+     </form>
      </div>
      
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>

@@ -26,7 +26,7 @@ public class DangKyBieuMauMethod {
 		{						
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("SELECT mabieumau FROM tieuchi WHERE matieuchi='"+matieuchi+"'");
+			rs=stm.executeQuery("select mabieumau from tieuchi where matieuchi='"+matieuchi+"'");
 			if(rs.next())
 				return rs.getString("mabieumau");
 		}catch(SQLException e){
@@ -62,7 +62,7 @@ public class DangKyBieuMauMethod {
 		{						
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("SELECT manhomtc FROM tieuchi WHERE matieuchi='"+matieuchi+"'");
+			rs=stm.executeQuery("select manhomtc from tieuchi where matieuchi='"+matieuchi+"'");
 			if(rs.next())
 				return rs.getString("manhomtc");
 		}catch(SQLException e){
@@ -98,7 +98,7 @@ public class DangKyBieuMauMethod {
 		{						
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			rs=stm.executeQuery("SELECT * FROM thuchienbieumau WHERE nguoithuchien='"+nguoithuchien+"' and matieuchi='"+matieuchi+"'");
+			rs=stm.executeQuery("select * from thuchienbieumau where nguoithuchien='"+nguoithuchien+"' and matieuchi='"+matieuchi+"'");
 			if(rs.next())
 				return true;
 		}catch(SQLException e){
@@ -138,7 +138,7 @@ public class DangKyBieuMauMethod {
 			String manhomtc=LayMaNhomTC(matieuchi);
 			con=DriverManager.getConnection(s.getSQL(),s.getName(),s.getPass());
 			stm=con.createStatement();
-			String sql="INSERT INTO thuchienbieumau VALUE(?,?,?,?,?,?,?,?,?)";
+			String sql="insert into thuchienbieumau value(?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
 			pst.setString(1,mabieumau);
 			pst.setString(2,nguoithuchien);

@@ -60,7 +60,7 @@
             		<img border="0" src="Image/spkt.jpg" height="143" style="width: 1002px">
           		</div>
           		<div align="right">
-            		<a href="TrangChuTruongBoMon.jsp"><button class="btn btn-default" >Thoát</button></a>
+            		<a href="TrangChuTruongKhoa.jsp"><button class="btn btn-default" >Thoát</button></a>
           		</div>
         	</td>
       	</tr>     

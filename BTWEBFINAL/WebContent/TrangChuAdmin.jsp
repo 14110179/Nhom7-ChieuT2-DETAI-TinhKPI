@@ -46,7 +46,7 @@
       </script>
 </head>
 <body>
-	 
+	 <% session.setAttribute("trangload","TrangChuAdmin.jsp") ;%>
 
     <table border="0" width="1002" cellpadding="0" cellspacing="0" align="center">
     <tr>

@@ -33,7 +33,7 @@
 				x= ltt.LayThongTin2(request.getParameter("taikhoan"));   								
         	%>
          <form action="UpdateThongTinTaiKhoan" method="post">
-        <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal fade" id="myModal" role="dialog">
   			<div class="modal-dialog" >
     			<div class="modal-content">
       				<div class="modal-header">
