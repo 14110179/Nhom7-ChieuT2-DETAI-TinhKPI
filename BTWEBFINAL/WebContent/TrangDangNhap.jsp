@@ -34,8 +34,8 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 		<div class=customDiv1>
-	<form action="Login" method="post" id="contactForm" >     
-        <div class="table-responsive" align="center">            	
+	<form action="Login" method="post" id="contactForm">     
+        <div class="table-responsive" align="center">           	
         <div class="col-md-4 col-md-offset-4">
             <select  id="usertruycap" name="chucvu" data-toggle="tooltip" data-placement="top" title="Chọn chức danh đăng nhập">           		
            			<option id="check" value="GiangVien">Giảng viên</option>
@@ -138,7 +138,7 @@
               		var text="";            		
               		if(x==null||x=="")
               			text="Bạn chưa nhập tài khoản!";
-              		else if(y==null||y=="")   
+              		else if(y==null||y=="")
               			text="Bạn chưa nhập mật khẩu!";
               		else
               			return false;
